@@ -43,7 +43,9 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = []
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "apps.general_page",
+]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -119,6 +121,13 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+
+# MEDIA
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#media-root
+MEDIA_ROOT = str(ROOT_DIR / "media")
+# https://docs.djangoproject.com/en/dev/ref/settings/#media-url
+MEDIA_URL = "/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
