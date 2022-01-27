@@ -133,3 +133,4 @@ dmypy.json
 
 # Project Static
 staticfiles/
+media/
