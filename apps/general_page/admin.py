@@ -12,5 +12,13 @@ class MainImageAdmin(AdminImagePreview, admin.ModelAdmin):
     )
     readonly_fields = ("image_preview_change_page",)
 
+    def has_add_permission(self, request, obj=None):
+        """Remove the save and add new button."""
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        """Remove the delete button."""
+        return False
+
     class Media:
         css = {"all": ("main/css/mdb.min.css",)}
