@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13.3
+    container_name: postgres
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    networks:
+      - develop_db_network
+  backend:
+    image: ghcr.io/rusjet-team/club_rusjet:develop
+    container_name: backend_club
+    restart: always
+    volumes:
+      - static_value:/code/staticfiles/
+      - media_value:/code/media/
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    networks:
+      - develop_db_network
+      - swag_network
+  migrations:
+    image: ghcr.io/rusjet-team/club_rusjet:develop
+    container_name: migrations_club
+    volumes:
+      - static_value:/code/staticfiles/
+      - media_value:/code/media/
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput"
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    networks:
+      - develop_db_network
+  swag:
+    image: ghcr.io/linuxserver/swag
+    container_name: swag_deploy
+    depends_on:
+      - migrations
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - TZ=Europe/Moscow
+      - VALIDATION=http
+      - CERTPROVIDER=zerossl
+    env_file:
+      - .env
+    networks:
+      - swag_network
+    volumes:
+      - ./swag_config/:/config/
+      - ./swag_nginx.conf:/config/nginx/site-confs/default
+      - static_value:/config/static/
+      - media_value:/config/media/
+    ports:
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+
+networks:
+    develop_db_network:
+      name: develop_db_network
+      driver: bridge
+    swag_network:
+      name: swag_network
+      external: true
+
+volumes:
+  postgres_data:
+    name: postgres_data
+  static_value:
+    name: static_value
+  media_value:
+    name: media_value
