@@ -7,20 +7,19 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='MainImage',
+            name="MainImage",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, unique=True, verbose_name='Название изображения')),
-                ('image', models.ImageField(upload_to='images/main_page', verbose_name='Фотография')),
+                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("name", models.CharField(max_length=50, unique=True, verbose_name="Название изображения")),
+                ("image", models.ImageField(upload_to="images/main_page", verbose_name="Фотография")),
             ],
             options={
-                'verbose_name': 'Изображение на странице заставки',
-                'verbose_name_plural': 'Изображения на странице заставки',
+                "verbose_name": "Изображение на странице заставки",
+                "verbose_name_plural": "Изображения на странице заставки",
             },
         ),
     ]
