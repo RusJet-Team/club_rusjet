@@ -66,7 +66,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [(ROOT_DIR / "templates"),],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -121,6 +121,9 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+STATICFILES_DIRS = (
+  ROOT_DIR / "base_static",
+)
 
 # MEDIA
 # ------------------------------------------------------------------------------
