@@ -1,0 +1,50 @@
+[tool.black]
+line-length = 120
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+    | venv
+    | _build
+    | buck-out
+    | build
+    | migrations
+    | config/settings
+  )/
+)
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 120
+
+[tool.poetry]
+name = "club_rusjet"
+version = "0.1.0"
+description = ""
+authors = ["Konstantin Raikhert <raikhert13@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "3.9.12"
+Django = "^4.0.1"
+django-environ = "^0.8.1"
+psycopg2-binary = "^2.9.3"
+Pillow = "^9.0.0"
+gunicorn = "^20.1.0"
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.17.0"
+flake8 = "^4.0.1"
+black = {version = "^21.12b0", allow-prereleases = true}
+django-debug-toolbar = "^3.2.4"
+isort = "^5.10.1"
+django-extensions = "^3.1.5"
+ipython = "^8.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
