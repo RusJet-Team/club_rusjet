@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 
 services:
   postgres:
@@ -12,7 +12,7 @@ services:
     networks:
       - develop_db_network
   backend:
-    image: ghcr.io/rusjet-team/club_rusjet:develop
+    image: ghcr.io/rusjet-team/club_rusjet:main
     container_name: backend_club
     restart: always
     volumes:
@@ -26,7 +26,7 @@ services:
       - develop_db_network
       - swag_network
   migrations:
-    image: ghcr.io/rusjet-team/club_rusjet:develop
+    image: ghcr.io/rusjet-team/club_rusjet:main
     container_name: migrations_club
     volumes:
       - static_value:/code/staticfiles/
