@@ -120,7 +120,7 @@ jobs:
             # Создание сети вынесено отдельно для возможности независимо перезапускать контейнеры (через external networks)
             docker network create swag_network || true
             # Установка приложения
-            cp -rf ${{ env.DEPLOY_PATH }}/deploy.service /etc/systemd/system/deploy.service
+            cp -rf ${{ env.DEPLOY_PATH }}/deploy_infra/deploy.service /etc/systemd/system/deploy.service
             systemctl daemon-reload
             systemctl restart deploy.service
             # После установки удаляем файлы
