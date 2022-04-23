@@ -91,7 +91,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            cd ${{ env.DEPLOY_PATH }}/
+            cd ${{ env.DEPLOY_PATH }}/deploy_infra
             # GitHub variables
             echo "IMAGE_BACK=${{ secrets.IMAGE_BACK }}" > .github_vars
             echo "IMAGE_BACK_TAG=${{ secrets.IMAGE_BACK_TAG }}" >> .github_vars
