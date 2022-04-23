@@ -12,15 +12,15 @@ User=root
 WorkingDirectory=/RUSJET/deploy_infra/
 
 # Remove old containers and networks
-ExecStartPre=docker-compose -f product_deploy.yml pull backend
-ExecStartPre=docker-compose -f product_deploy.yml pull postgres
-ExecStartPre=docker-compose -f product_deploy.yml down
+ExecStartPre=docker-compose -f product_deploy.yaml pull backend
+ExecStartPre=docker-compose -f product_deploy.yaml pull postgres
+ExecStartPre=docker-compose -f product_deploy.yaml down
 
 # Compose up
-ExecStart=docker-compose -f product_deploy.yml --env-file /RUSJET/.github_vars up
+ExecStart=docker-compose -f product_deploy.yaml --env-file /RUSJET/deploy_infra/.github_vars up
 
 # Compose down
-ExecStop=docker-compose -f product_deploy.yml --env-file /RUSJET/.github_vars down
+ExecStop=docker-compose -f product_deploy.yaml --env-file /RUSJET/deploy_infra/.github_vars down
 
 [Install]
 WantedBy=multi-user.target
