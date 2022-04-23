@@ -9,7 +9,7 @@ RestartSec=5
 TimeoutStartSec=1200
 User=root
 
-WorkingDirectory=/RUSJET/
+WorkingDirectory=/RUSJET/deploy_infra/
 
 # Remove old containers and networks
 ExecStartPre=docker-compose -f product_deploy.yml pull backend

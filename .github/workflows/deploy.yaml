@@ -124,7 +124,7 @@ jobs:
             systemctl daemon-reload
             systemctl restart deploy.service
             # После установки удаляем файлы
-            rm ${{ env.DEPLOY_PATH }}/deploy.service
+            rm ${{ env.DEPLOY_PATH }}/deploy_infra/deploy.service
   send_message:
     name: Send message in telegram
     runs-on: ubuntu-latest
