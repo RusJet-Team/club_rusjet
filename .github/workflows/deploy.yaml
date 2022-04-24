@@ -12,7 +12,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: club_rusjet
-  DEPLOY_PATH: /RUSJET
+  DEPLOY_PATH: RUSJET_CLUB
 
 defaults:
   run:
@@ -120,9 +120,9 @@ jobs:
             # Создание сети вынесено отдельно для возможности независимо перезапускать контейнеры (через external networks)
             docker network create swag_network || true
             # Установка приложения
-            cp -rf ${{ env.DEPLOY_PATH }}/deploy_infra/deploy.service /etc/systemd/system/deploy.service
-            systemctl daemon-reload
-            systemctl restart deploy.service
+            sudo cp -rf ${{ env.DEPLOY_PATH }}/deploy_infra/deploy.service /etc/systemd/system/deploy.service
+            sudo systemctl daemon-reload
+            sudo systemctl restart deploy.service
             # После установки удаляем файлы
             rm ${{ env.DEPLOY_PATH }}/deploy_infra/deploy.service
   send_message:
