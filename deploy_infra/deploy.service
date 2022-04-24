@@ -9,7 +9,7 @@ RestartSec=5
 TimeoutStartSec=1200
 User=root
 
-WorkingDirectory=/RUSJET/deploy_infra/
+WorkingDirectory=/home/rusjet/RUSJET_CLUB/deploy_infra/
 
 # Stop containers and networks
 ExecStartPre=docker-compose -f product_deploy.yaml pull backend
