@@ -120,11 +120,11 @@ jobs:
             # Создание сети вынесено отдельно для возможности независимо перезапускать контейнеры (через external networks)
             docker network create swag_network || true
             # Установка приложения
-            sudo cp -rf ${{ env.DEPLOY_PATH }}/deploy_infra/deploy.service /etc/systemd/system/deploy.service
+            sudo cp -rf deploy.service /etc/systemd/system/deploy.service
             sudo systemctl daemon-reload
             sudo systemctl restart deploy.service
             # После установки удаляем файлы
-            rm ${{ env.DEPLOY_PATH }}/deploy_infra/deploy.service
+            rm deploy.service
   send_message:
     name: Send message in telegram
     runs-on: ubuntu-latest
