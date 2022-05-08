@@ -1,24 +1,27 @@
 # from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
+from apps.main_page.models import CarouselItem, Partner
+
 
 class HomePageView(TemplateView):
 
-    template_name = "develop.html"
+    template_name = "index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['latest_articles'] = Article.objects.all()[:5]
+        context["carousel_items"] = CarouselItem.objects.all()
+        context["partners"] = Partner.objects.all()
         return context
 
 
 class PortfolioDetailsView(TemplateView):
 
-    template_name = "portfolio-details.html"
+    template_name = "partners.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['latest_articles'] = Article.objects.all()[:5]
+        context["partners"] = Partner.objects.all()
         return context
 
 
