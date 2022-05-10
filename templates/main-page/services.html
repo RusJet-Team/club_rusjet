@@ -1,4 +1,5 @@
    <!-- ======= Services Section ======= -->
+   {% load static %}
    <section id="services" class="services">
     <div class="container">
 
@@ -42,7 +43,8 @@
 
         <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 gy-3">
           <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bx bx-tachometer"></i></div>
+            <img src="{% static '/assets/img/more-services-1.jpg' %}" class="img-fluid" alt="" data-aos="fade-up" data-aos-delay="300">
+            <!-- <div class="icon"><i class="bx bx-tachometer"></i></div> -->
             <h4 class="title"><a href="">Magni Dolores</a></h4>
             <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
           </div>

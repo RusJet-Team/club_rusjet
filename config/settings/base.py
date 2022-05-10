@@ -47,6 +47,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "apps.main_page",
+    "apps.club",
+    "apps.services",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
