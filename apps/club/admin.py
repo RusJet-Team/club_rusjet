@@ -11,6 +11,3 @@ class CarouselItemAdmin(AdminImagePreview, admin.ModelAdmin):
         "image_preview_list_page",
     )
     readonly_fields = ("image_preview_change_page",)
-
-    class Media:
-        css = {"all": ("assets/vendor/bootstrap/css/bootstrap.min.css",)}

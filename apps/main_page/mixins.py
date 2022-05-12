@@ -12,12 +12,16 @@ class AdminImagePreview:
 
     @admin.display(description="Превью")
     def image_preview_change_page(self, obj):
-        return format_html('<img src="{}" width="600" height="300" class="img-thumbnail" />'.format(obj.image.url))
+        return format_html('<img src="{}" height="300" style="object-fit: contain;" />'.format(obj.image.url))
 
     @admin.display(description="Превью")
     def image_preview_list_page(self, obj):
-        return format_html(
-            '<img src="{}" width="100" height="50" class="figure-img img-fluid rounded shadow-3 mb-3" />'.format(
-                obj.image.url
-            )
-        )
+        if obj.image:
+            return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
+
+
+class HideOnNavPanelAdminModelMixin:
+    """Mixin hides model from admin main page(nav. panel)."""
+
+    def has_module_permission(self, request):
+        return False

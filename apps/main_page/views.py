@@ -2,6 +2,7 @@
 from django.views.generic.base import TemplateView
 
 from apps.main_page.models import CarouselItem, Partner
+from apps.services.models import ServiceItem
 
 
 class HomePageView(TemplateView):
@@ -12,6 +13,8 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["carousel_items"] = CarouselItem.objects.all()
         context["partners"] = Partner.objects.all()
+        context["services"] = ServiceItem.objects.all()
+        # ServiceItem.objects.values("name","short_description", "image")
         return context
 
 

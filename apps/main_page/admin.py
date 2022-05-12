@@ -12,9 +12,6 @@ class CarouselItemAdmin(AdminImagePreview, admin.ModelAdmin):
     )
     readonly_fields = ("image_preview_change_page",)
 
-    class Media:
-        css = {"all": ("assets/vendor/bootstrap/css/bootstrap.min.css",)}
-
 
 @admin.register(Partner)
 class PartnerAdmin(AdminImagePreview, admin.ModelAdmin):
@@ -23,6 +20,3 @@ class PartnerAdmin(AdminImagePreview, admin.ModelAdmin):
         "image_preview_list_page",
     )
     readonly_fields = ("image_preview_change_page",)
-
-    class Media:
-        css = {"all": ("assets/vendor/bootstrap/css/bootstrap.min.css",)}
