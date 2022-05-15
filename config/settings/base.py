@@ -41,10 +41,14 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
-THIRD_PARTY_APPS = []
+THIRD_PARTY_APPS = [
+    'django_cleanup.apps.CleanupConfig',
+]
 
 LOCAL_APPS = [
     "apps.main_page",
+    "apps.club",
+    "apps.services",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -74,6 +78,8 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "config.context_processors.year",
+                "config.context_processors.services",
             ],
         },
     },

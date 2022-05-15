@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Наша команда {% endblock %}
+
+{% block content %}
+
+<main id="main">
+    <section></section>
+    <section id="team" class="team section-bg">
+        <div class="container">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Наша команда</h2>
+            <p>Каждый человек в нашей команде ценное звено</p>
+        </div>
+        <div class="row">
+            {% for member in members %}
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                <div class="member-img">
+                <img src="{{ member.image.url }}" class="img-fluid" alt="">
+                {% if member.telegram_contact %}
+                <div class="social">
+                    <a href="{{ member.telegram_contact }}"><i class="bi bi-telegram"></i></a>
+                </div>
+                {% endif %}
+                </div>
+                <div class="member-info">
+                <h4>{{ member.first_name }} {{ member.last_name }}</h4>
+                <span>{{ member.vocation }}</span>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </section>
+  </main>
+{% endblock %}
