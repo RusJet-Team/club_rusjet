@@ -14,7 +14,6 @@ class HomePageView(TemplateView):
         context["carousel_items"] = CarouselItem.objects.all()
         context["partners"] = Partner.objects.all()
         context["services"] = ServiceItem.objects.all()
-        # ServiceItem.objects.values("name","short_description", "image")
         return context
 
 

@@ -23,6 +23,12 @@ class ClubMember(models.Model):
         verbose_name="Фотография",
         help_text="Изображения только в формате jpg",
     )
+    telegram_contact = models.URLField(
+        max_length=100,
+        blank=True,
+        verbose_name="Ссылка на профиль телеграм",
+        help_text="Необязательно",
+    )
 
     class Meta:
         verbose_name = "Член клуба"

@@ -1,4 +1,7 @@
 {% load static %}
+
+{% url 'index' as index_url %}
+
  <header id="header" class="fixed-top d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
 
@@ -8,7 +11,7 @@
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li class="dropdown active"><a href="#about"><span>О нас</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown active"><a href="{% url 'index' %}#about"><span>О нас</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="{% url 'history' %}">История клуба</a></li>
             <li><a href="{% url 'achievements' %}">Достижения</a></li>
@@ -16,20 +19,19 @@
             <li><a href="{% url 'performances' %}">Выступления</a></li>
           </ul>
         </li>
-        <li class="dropdown active"><a href="#services"><span>Наши услуги</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown active"><a href="{% url 'index' %}#services"><span>Наши услуги</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a href="{% url 'history' %}">История клуба</a></li>
-            <li><a href="{% url 'achievements' %}">Достижения</a></li>
-            <li><a href="{% url 'members' %}">Наша команда</a></li>
-            <li><a href="{% url 'performances' %}">Выступления</a></li>
+            {% for service_name in services_names %}
+            <li><a href="{% url 'serviceitem-detail' service_name.slug %}">{{ service_name.name }}</a></li>
+            {% endfor %}
           </ul>
         </li>
         <!-- <li><a class="nav-link scrollto active" href="#about">О нас</a></li> -->
-        <li><a class="nav-link scrollto" href="#services">Services</a></li>
-        <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li>
+        <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
+        <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
         <!-- <li><a class="nav-link scrollto" href="#">Team</a></li> -->
-        <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-        <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+        <!-- <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li> -->
+        <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Drop Down 1</a></li>
             <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -45,9 +47,9 @@
             <li><a href="#">Drop Down 3</a></li>
             <li><a href="#">Drop Down 4</a></li>
           </ul>
-        </li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+        </li> -->
+        <li><a class="nav-link scrollto" href="{% url 'index' %}#contact">Контакты</a></li>
+        <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
