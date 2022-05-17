@@ -49,6 +49,7 @@ LOCAL_APPS = [
     "apps.main_page",
     "apps.club",
     "apps.services",
+    "apps.news",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -79,7 +80,6 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "config.context_processors.year",
-                "config.context_processors.services",
             ],
         },
     },

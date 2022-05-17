@@ -53,6 +53,11 @@ class Partner(models.Model):
         upload_to="images/partners",
         verbose_name="Логотип партнёра",
     )
+    url = models.URLField(
+        max_length=200,
+        blank=True,
+        verbose_name="Ссылка на сайт",
+    )
 
     class Meta:
         verbose_name = "Партнёр внизу страницы"
