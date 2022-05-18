@@ -1,5 +1,7 @@
 from django.db import models
 
+from config.utils.slugify import slugify
+
 
 class ServiceItem(models.Model):
     name = models.CharField(
@@ -31,6 +33,11 @@ class ServiceItem(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class ServiceCarouselImage(models.Model):
