@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 
 from apps.club.factories import ClubMemberFactory
 from apps.main_page.factories import CarouselItemFactory, PartnerFactory
-from apps.news.factories import NewsCategoryFactory
+from apps.news.factories import NewsCategoryFactory, NewsFactory, UserFactory
 from apps.news.models import NewsCategory
 from apps.services.factories import ServiceCarouselImageFactory, ServiceItemFactory
 
@@ -32,6 +32,22 @@ class Command(BaseCommand):
             with factory.Faker.override_default_locale("ru_RU"):
                 for category_name in CATEGORIES:
                     NewsCategoryFactory(name=category_name)
+
+                UserFactory.create_batch(5)
+
+                NewsFactory.create_batch(10)
+
+                for _ in range(10):
+                    NewsFactory.create(
+                        category="Мероприятия",
+                        event_bool=True,
+                    )
+
+                for _ in range(10):
+                    NewsFactory.create(
+                        category="Оборудование",
+                        video_url=True,
+                    )
 
                 ClubMemberFactory.create_batch(10)
 
