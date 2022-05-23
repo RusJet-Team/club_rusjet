@@ -102,14 +102,6 @@ class NewsFactory(factory.django.DjangoModelFactory):
             self.event_bool = event_bool
 
     @factory.post_generation
-    def video_url(self, created, extracted, **kwargs):
-        if not created:
-            return
-        if extracted:
-            url = "https://www.youtube.com/watch?v=yC4jG-wuVoc"
-            self.video_url = url
-
-    @factory.post_generation
     def event_date(self, created, extracted, **kwargs):
         if not created:
             return

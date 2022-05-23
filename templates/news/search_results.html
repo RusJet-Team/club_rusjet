@@ -1,87 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} Новости {% endblock %}
+{% block title %} Результаты поиска {% endblock %}
 
 {% block content %}
 <main>
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-            <h2>Наши новости</h2>
-            </div>
-
-        </div>
-        </section>
-
-        <!-- ======= Blog Section ======= -->
+    <section>
+    </section>
         <section id="blog" class="blog">
         <div class="container" data-aos="fade-up" data-aos-duration="300">
-
             <div class="row">
-
             <div class="col-lg-8 entries">
                 {% for news_item in object_list %}
                 <article class="entry">
-
                 <div class="entry-img">
                     <img src="{{ news_item.image.url }}" alt="" class="img-fluid">
                 </div>
-
                 <h2 class="entry-title">
                     <a href="{% url 'news_detail' news_item.pk %}">{{ news_item.name }}</a>
                 </h2>
-
                 <div class="entry-meta">
                     <ul>
                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{ news_item.pub_user.first_name }} {{ news_item.pub_user.last_name }}</a></li>
                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time datetime="{{ news_item.pub_date }}">{{ news_item.pub_date }}</time></a></li>
                     </ul>
                 </div>
-
                 <div class="entry-content">
                     <p>{{ news_item.title }}</p>
                     <div class="read-more">
                     <a href="{% url 'news_detail' news_item.pk %}">Читать</a>
                     </div>
                 </div>
-
                 </article>
                 {% empty %}
                  <article class="entry">
                 <h2 class="entry-title">
-                    <a>Пока нет новостей...</a>
+                    <a>К сожалению, ничего не нашлось...</a>
                 </h2>
-
                 </article>
                 {% endfor %}
-                {% if is_paginated %}
-                <div class="blog-pagination">
-                    <ul class="justify-content-center">
-                        {% if page_obj.has_previous %}
-                        <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
-                        {% endif %}
-                        <li class="active"><a href="#">{{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</a></li>
-                        {% if page_obj.has_next %}
-                        <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-                        {% endif %}
-                    </ul>
-                    </div>
-                    {% endif %}
-
-
-
-
-
-            </div><!-- End blog entries list -->
-
+            </div>
             <div class="col-lg-4">
                 {% include 'news/includes/sidebar.html' %}
             </div>
-
         </div>
-        </section><!-- End Blog Section -->
+        </section>
 </main>
 
 {% endblock %}

@@ -42,7 +42,8 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 THIRD_PARTY_APPS = [
-    'django_cleanup.apps.CleanupConfig',
+    "django_cleanup.apps.CleanupConfig",
+    "ckeditor",
 ]
 
 LOCAL_APPS = [

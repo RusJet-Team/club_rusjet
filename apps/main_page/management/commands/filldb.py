@@ -46,7 +46,6 @@ class Command(BaseCommand):
                 for _ in range(10):
                     NewsFactory.create(
                         category="Оборудование",
-                        video_url=True,
                     )
 
                 ClubMemberFactory.create_batch(10)

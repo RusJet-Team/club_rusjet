@@ -8,7 +8,8 @@ from apps.news.models import News, NewsCategory
 class NewsAdmin(AdminImagePreview, admin.ModelAdmin):
     list_display = ("name", "get_news_author", "pub_date", "image_preview_list_page")
     readonly_fields = ("pub_date", "get_news_author", "image_preview_change_page")
-    ordering = ("pub_date",)
+    list_filter = ("category", "event_date")
+    ordering = ("-pub_date",)
 
     def save_model(self, request, obj, form, change):
         print(request.user)

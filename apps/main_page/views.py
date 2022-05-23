@@ -15,7 +15,7 @@ class HomePageView(TemplateView):
         context["carousel_items"] = CarouselItem.objects.all()
         context["partners"] = Partner.objects.all()
         context["services"] = ServiceItem.objects.all()
-        context["news"] = News.objects.all().order_by("pub_date")[:4]
+        context["news"] = News.objects.all().order_by("-pub_date")[:4]
 
         return context
 

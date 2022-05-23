@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -38,7 +39,7 @@ class News(models.Model):
         max_length=500,
         verbose_name="Краткое описание",
     )
-    text = models.TextField(
+    text = RichTextField(
         verbose_name="Основной текст",
     )
     pub_date = models.DateField(
@@ -63,11 +64,6 @@ class News(models.Model):
         related_name="news",
         verbose_name="Категории",
     )
-    video_url = models.URLField(
-        blank=True,
-        verbose_name="Ссылка на видео",
-        help_text="Если необходимо вставить видео, укажите ссылку на Youtube или Rutube",
-    )
     geolocation_url = models.TextField(
         verbose_name="Геолокация",
         blank=True,
@@ -88,7 +84,7 @@ class News(models.Model):
 
     class Meta:
         ordering = [
-            "pub_date",
+            "-pub_date",
         ]
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
