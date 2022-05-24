@@ -51,6 +51,7 @@ LOCAL_APPS = [
     "apps.club",
     "apps.services",
     "apps.news",
+    "apps.projects",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

@@ -23,8 +23,8 @@ class NewsCategory(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = "Название категории"
-        verbose_name_plural = "Названия категорий"
+        verbose_name = "Категория новости"
+        verbose_name_plural = "Категории новостей"
 
     def __str__(self):
         return self.name

@@ -1,0 +1,10 @@
+<h3 class="sidebar-title">Ближайшие мероприятия:</h3>
+<div class="sidebar-item recent-posts">
+    {% for event in upcoming_events %}
+    <div class="post-item clearfix">
+    <img src="{{ event.image.url }}" alt="">
+    <h4><a href="{% url 'news_detail' event.id %}">{{ event.name }}</a></h4>
+    <time datetime="{{ event.event_date }}">Дата: {{ event.event_date }}</time>
+    </div>
+    {% endfor %}
+</div>

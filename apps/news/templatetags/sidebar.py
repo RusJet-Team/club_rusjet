@@ -11,7 +11,7 @@ def get_categories():
     return categories
 
 
-@register.simple_tag()
+@register.inclusion_tag("news/includes/upcoming_events.html")
 def get_upcoming_events():
     news = News.objects.filter(category__name="Мероприятия").order_by("event_date")[:5]
-    return news
+    return {"upcoming_events": news}

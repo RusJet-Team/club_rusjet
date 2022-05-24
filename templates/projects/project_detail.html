@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ object.name }}{% endblock %}
+{% block content %}
+<main>
+    <section>
+    </section>
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                {% for image in object.images.all %}
+                <div class="swiper-slide">
+                  <img src="{{ image.image.url }}" alt="">
+                </div>
+                {% endfor %}
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="portfolio-description">
+              <h2>{{ object.title }}</h2>
+              <p>{{ object.text|safe }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</main>
+{% endblock %}

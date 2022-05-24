@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Наши проекты{% endblock %}
+
+{% block content %}
+{% load tags %}
+<main>
+    <section></section>
+     <section id="portfolio" class="portfolio">
+        <div class="container">
+
+          <div class="section-title" data-aos="fade-up">
+            <h2>Наши проекты</h2>
+            <p>За десятилетия работы мы создали немало удивтительных проектов</p>
+          </div>
+
+          <div class="row" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-12 d-flex justify-content-center">
+              <ul id="portfolio-flters">
+                {% get_project_categories as categories %}
+                <li data-filter="*" class="filter-active">Все</li>
+                {% for category in categories %}
+                <li data-filter=".filter-{{ category.slug }}">{{ category.name }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+            {% for project_item in object_list %}
+            <div class="col-lg-4 col-md-6 portfolio-item filter-{{ project_item.category.slug }}">
+              <div class="portfolio-wrap">
+                <img src="{{ project_item.images.first.image.url }}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>{{ project_item.name }}</h4>
+                  <p>{{ project_item.title }}</p>
+                  <div class="portfolio-links">
+                    <a href="{{ project_item.images.first.image.url }}" data-gallery="portfolioGallery"
+                      class="portfolio-lightbox" title="{{ project_item.name }}"><i class="bx bx-move"></i></a>
+                    <a href="{% url 'projects_detail' project_item.id %}" title="Подробнее"><i class="bx bx-link-external"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

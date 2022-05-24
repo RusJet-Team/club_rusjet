@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 from config.utils.slugify import slugify
@@ -17,9 +18,13 @@ class ServiceItem(models.Model):
         verbose_name="Значок на главной странице",
         help_text="Изображения только в формате png 120*120",
     )
-    slug = models.SlugField(unique=True, null=True, verbose_name="Адрес услуги в url сайта")
-    text = models.TextField(
-        blank=True,
+    slug = models.SlugField(
+        unique=True,
+        null=True,
+        verbose_name="Адрес услуги в url сайта",
+        help_text="Если оставить пустым, заполнится транслитом название услуги",
+    )
+    text = RichTextField(
         verbose_name="Подробное описание",
     )
     carousel_images = models.ManyToManyField(
