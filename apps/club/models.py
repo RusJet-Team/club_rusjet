@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 
@@ -23,10 +24,11 @@ class ClubMember(models.Model):
         verbose_name="Фотография",
         help_text="Изображения только в формате jpg",
     )
-    telegram_contact = models.URLField(
-        max_length=100,
+    email = models.EmailField(
+        max_length=150,
         blank=True,
-        verbose_name="Ссылка на профиль телеграм",
+        unique=True,
+        verbose_name="Электронная почта",
         help_text="Необязательно",
     )
 
@@ -36,3 +38,42 @@ class ClubMember(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+
+class HalfStaticPage(models.Model):
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Название страницы",
+    )
+    slug = models.SlugField(
+        unique=True,
+        verbose_name="URL страницы",
+    )
+    text = RichTextField(
+        verbose_name="Текст",
+    )
+    images = models.ManyToManyField(
+        "HalfStaticPageImage",
+        verbose_name="Изображения на статических страницах",
+    )
+
+    class Meta:
+        verbose_name = "Статическая страница"
+        verbose_name_plural = "Статические страницы"
+
+    def __str__(self):
+        return self.name
+
+
+class HalfStaticPageImage(models.Model):
+    image = models.ImageField(
+        upload_to="images/club/staticpages/",
+        verbose_name="Изображения в карусели услуги",
+    )
+
+    class Meta:
+        verbose_name = "Изображение статических страниц"
+        verbose_name_plural = "Изображения статических страниц"
+
+    def __str__(self):
+        return self.image.name

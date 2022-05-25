@@ -46,5 +46,5 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(ProjectImage)
-class CarouselItemAdmin(HideOnNavPanelAdminModelMixin, AdminImagePreview, admin.ModelAdmin):
-    list_display = ("image_preview_list_page",)
+class CarouselItemAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
+    pass

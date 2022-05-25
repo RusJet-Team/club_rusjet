@@ -19,9 +19,9 @@
             <div class="member" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
                 <div class="member-img">
                 <img src="{{ member.image.url }}" class="img-fluid" alt="">
-                {% if member.telegram_contact %}
+                {% if member.email %}
                 <div class="social">
-                    <a href="{{ member.telegram_contact }}"><i class="bi bi-telegram"></i></a>
+                    <a href="mailto:{{ member.email }}"><i class="bi bi-envelope"></i></a>
                 </div>
                 {% endif %}
                 </div>

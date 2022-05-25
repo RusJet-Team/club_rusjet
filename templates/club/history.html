@@ -1,30 +1,23 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %} Истоия клуба {% endblock %}
+{% block title %}{{ history.name }}{% endblock %}
 
 {% block content %}
 
 <main id="main">
-
-    <!-- ======= Breadcrumbs Section ======= -->
-    <section class="breadcrumbs">
+    <section>
+    </section>
+    <section class="team section-bg">
       <div class="container">
-
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Inner Page</h2>
+        <div class="section-title" data-aos="fade-up">
+            <h2>{{ history.name }}</h2>
         </div>
-
-      </div>
-    </section><!-- End Breadcrumbs Section -->
-
-    <section class="inner-page">
-      <div class="container">
+      <div class="container" data-aos="fade-up">
         <p>
-          Example inner page template
+          {{ history.text|safe }}
         </p>
       </div>
     </section>
-
-  </main><!-- End #main -->
+  </main>
 {% endblock %}

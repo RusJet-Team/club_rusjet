@@ -45,5 +45,5 @@ class ServiceItemAdmin(AdminImagePreview, admin.ModelAdmin):
 
 
 @admin.register(ServiceCarouselImage)
-class CarouselItemAdmin(HideOnNavPanelAdminModelMixin, AdminImagePreview, admin.ModelAdmin):
-    list_display = ("image_preview_list_page",)
+class CarouselItemAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
+    pass

@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView
 
-from apps.club.models import ClubMember
+from apps.club.models import ClubMember, HalfStaticPage
 
 
 class ClubMembersView(TemplateView):
@@ -14,13 +14,31 @@ class ClubMembersView(TemplateView):
         return context
 
 
-def history(request):
-    return render(request, "club/history.html")
+class HistoryView(TemplateView):
+
+    template_name = "club/history.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["history"] = get_object_or_404(HalfStaticPage, slug="history")
+        return context
 
 
-def achievements(request):
-    return render(request, "club/achievements.html")
+class AchievementsView(TemplateView):
+
+    template_name = "club/achievements.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["achievements"] = get_object_or_404(HalfStaticPage, slug="achievements")
+        return context
 
 
-def performances(request):
-    return render(request, "club/performances.html")
+class PerformancesView(TemplateView):
+
+    template_name = "club/performances.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["performances"] = get_object_or_404(HalfStaticPage, slug="performances")
+        return context
