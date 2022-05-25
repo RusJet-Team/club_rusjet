@@ -1,6 +1,6 @@
 {% load static %}
 
-{% url 'index' as index_url %}
+{% load nav_services %}
 
  <header id="header" class="fixed-top d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
@@ -21,13 +21,15 @@
         </li>
         <li class="dropdown active"><a href="{% url 'index' %}#services"><span>Наши услуги</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            {% for service_name in services_names %}
+            {% get_service_names as service_names %}
+            {% for service_name in service_names %}
             <li><a href="{% url 'serviceitem-detail' service_name.slug %}">{{ service_name.name }}</a></li>
             {% endfor %}
           </ul>
         </li>
-        <!-- <li><a class="nav-link scrollto active" href="#about">О нас</a></li> -->
-        <!-- <li><a class="nav-link scrollto" href="#services">Services</a></li> -->
+        <li><a class="nav-link scrollto" href="{% url 'projects_list' %}">Проекты</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'news_list' %}">Новости</a></li>
+
         <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
         <!-- <li><a class="nav-link scrollto" href="#">Team</a></li> -->
         <!-- <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li> -->

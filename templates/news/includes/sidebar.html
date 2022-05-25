@@ -1,0 +1,19 @@
+{% load sidebar %}
+<div class="sidebar">
+    <div class="sidebar-item search-form">
+        <form action="{% url 'search_results' %}" method="get">
+        <input name="search" type="text" placeholder="Поиск в новостях">
+        <button type="submit"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+    {% get_upcoming_events %}
+    <h3 class="sidebar-title">Категории</h3>
+    <div class="sidebar-item categories">
+        <ul>
+        {% get_categories as categories %}
+        {% for category in categories %}
+        <li><a href="{% url 'news_category' category.slug %}">{{ category.name }} <span>({{ category.news.count }})</span></a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>

@@ -13,8 +13,8 @@
 </section>
 
 <section id="portfolio-details" class="portfolio-details">
-  <div class="container">
 
+  <div class="container">
     <div class="row gy-4">
       <div class="col-lg-8">
         <div class="portfolio-details-slider swiper">
@@ -32,7 +32,7 @@
       <div class="col-lg-4">
         <div class="portfolio-description">
           <h2>{{ object.short_description }}</h2>
-          <p>{{ object.text }}</p>
+          <p>{{ object.text|safe }}</p>
         </div>
       </div>
 

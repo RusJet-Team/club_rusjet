@@ -2,6 +2,7 @@
 from django.views.generic.base import TemplateView
 
 from apps.main_page.models import CarouselItem, Partner
+from apps.news.models import News
 from apps.services.models import ServiceItem
 
 
@@ -14,6 +15,8 @@ class HomePageView(TemplateView):
         context["carousel_items"] = CarouselItem.objects.all()
         context["partners"] = Partner.objects.all()
         context["services"] = ServiceItem.objects.all()
+        context["news"] = News.objects.all().order_by("-pub_date")[:4]
+
         return context
 
 

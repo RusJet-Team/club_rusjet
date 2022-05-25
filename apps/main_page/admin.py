@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import Group
 
 from apps.main_page.mixins import AdminImagePreview
 from apps.main_page.models import CarouselItem, Partner
@@ -20,3 +21,7 @@ class PartnerAdmin(AdminImagePreview, admin.ModelAdmin):
         "image_preview_list_page",
     )
     readonly_fields = ("image_preview_change_page",)
+
+
+admin.site.site_header = "Администрирование сайта клуба "
+admin.site.unregister(Group)
