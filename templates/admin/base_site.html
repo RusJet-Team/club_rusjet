@@ -3,6 +3,9 @@
 {% load cache %}
 
 
+{% block extrahead %}
+    <link href="{% static '/assets/img/favicon.png' %}" rel="icon">
+{% endblock %}
 {% block branding %}
     {% cache 500 branding %}
         <style>
