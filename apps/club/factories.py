@@ -1,4 +1,4 @@
-import urllib
+import urllib.request
 
 import factory
 from django.core.files.base import ContentFile
