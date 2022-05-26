@@ -1,5 +1,5 @@
 import datetime
-import urllib
+import urllib.request
 
 import factory
 from django.contrib.auth import get_user_model

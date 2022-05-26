@@ -7,7 +7,7 @@ After=docker.service
 Restart=always
 RestartSec=5
 TimeoutStartSec=1200
-User=root
+User=rusjet
 
 WorkingDirectory=/home/rusjet/RUSJET_CLUB/deploy_infra/
 
