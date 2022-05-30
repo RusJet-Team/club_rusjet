@@ -52,6 +52,7 @@ LOCAL_APPS = [
     "apps.services",
     "apps.news",
     "apps.projects",
+    "apps.equipment",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -144,3 +145,13 @@ MEDIA_URL = "/media/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Full',
+        'height': 300,
+        'width': '100%',
+        'removePlugins': 'stylesheetparser',
+        'extraAllowedContent': 'iframe[*]',
+    },
+}
