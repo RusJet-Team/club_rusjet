@@ -15,8 +15,8 @@
 <section id="portfolio-details" class="portfolio-details">
 
   <div class="container">
-    <div class="row gy-4">
-      <div class="col-lg-8">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
         <div class="portfolio-details-slider swiper">
           <div class="swiper-wrapper align-items-center">
             {% for image in object.carousel_images.all %}
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-md-8">
         <div class="portfolio-description">
           <h2>{{ object.short_description }}</h2>
           <p>{{ object.text|safe }}</p>

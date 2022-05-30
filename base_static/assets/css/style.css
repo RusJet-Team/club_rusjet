@@ -1854,6 +1854,7 @@ section {
 
 .blog .blog-pagination {
   color: #8795a4;
+  margin-bottom: 10px;
 }
 
 .blog .blog-pagination ul {
@@ -1879,6 +1880,7 @@ section {
 .blog .blog-pagination li.active,
 .blog .blog-pagination li:hover {
   background: #3498db;
+  border-radius: 5px;
 }
 
 .blog .blog-pagination li.active a,
