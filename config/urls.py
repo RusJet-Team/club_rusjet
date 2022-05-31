@@ -22,6 +22,11 @@ DEBUG = settings.DEBUG
 MEDIA_URL = settings.MEDIA_URL
 MEDIA_ROOT = settings.MEDIA_ROOT
 
+handler400 = "apps.main_page.views.bad_request"
+handler403 = "apps.main_page.views.permission_denied"
+handler404 = "apps.main_page.views.page_not_found"
+handler500 = "apps.main_page.views.server_error"
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("apps.main_page.urls")),
