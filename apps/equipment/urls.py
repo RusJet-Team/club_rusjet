@@ -1,8 +1,8 @@
 from django.urls import path
 
-from apps.equipment.views import EquipmentView, ShopView
+from apps.equipment.views import EquipmentDetailView, EquipmentView
 
 urlpatterns = [
     path("equipment/", EquipmentView.as_view(), name="equipment"),
-    path("shop/", ShopView.as_view(), name="shop"),
+    path("equipment-detail/", EquipmentDetailView.as_view(), name="equipment-detail"),
 ]

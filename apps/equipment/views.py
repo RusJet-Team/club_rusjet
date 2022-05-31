@@ -12,9 +12,9 @@ class EquipmentView(TemplateView):
         return context
 
 
-class ShopView(TemplateView):
+class EquipmentDetailView(TemplateView):
 
-    template_name = "equipment/list_shop.html"
+    template_name = "equipment/equipment-detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

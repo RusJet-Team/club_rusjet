@@ -27,6 +27,29 @@
             {% endfor %}
           </ul>
         </li>
+        <li class="dropdown active"><a href="{% url 'equipment' %}"><span>Оборудование</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li class="dropdown"><a href="{% url 'equipment' %}"><span>Двигатели</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="{% url 'equipment' %}">Турбореактивные двигатели</a></li>
+                <li><a href="{% url 'equipment' %}">Турбовинтовые двигатели</a></li>
+                <li><a href="{% url 'equipment' %}">Бензиновые двигатели</a></li>
+              </ul>
+            <li class="dropdown"><a href="{% url 'equipment' %}"><span>Электроника</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="{% url 'equipment' %}">Системы бортового питания</a></li>
+                <li><a href="{% url 'equipment' %}">Рулевые машинки</a></li>
+                <li><a href="{% url 'equipment' %}">Гироскопы</a></li>
+                <li><a href="{% url 'equipment' %}">Аккумуляторы</a></li>
+              </ul>
+            <li class="dropdown"><a href="{% url 'equipment' %}"><span>Комплектующие</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="{% url 'equipment' %}">Для реактивных двигателей</a></li>
+                <li><a href="{% url 'equipment' %}">Топливная система</a></li>
+                <li><a href="{% url 'equipment' %}">Выхлопная система</a></li>
+                <li><a href="{% url 'equipment' %}">Дымовая система</a></li>
+              </ul>
+          </ul>
         <li><a class="nav-link scrollto" href="{% url 'projects_list' %}">Проекты</a></li>
         <li><a class="nav-link scrollto" href="{% url 'news_list' %}">Новости</a></li>
 

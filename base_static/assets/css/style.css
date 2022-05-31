@@ -1231,6 +1231,207 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Shop
+--------------------------------------------------------------*/
+
+.shop-card h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 0;
+}
+
+.shop-card {
+  height: 220px;
+  width: 200px;
+  background-position: center center;
+  background-size: contain !important;
+  color: rgb(130, 130, 130);
+  position: relative;
+  border: 1px solid #e8e8e8;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.shop-card-category {
+  position: absolute;
+  top: 170px;
+  left: 10px;
+  color: #556270;
+  font-size: 22px;
+}
+
+.shop-card-description {
+  position: absolute;
+  font-style: italic;
+  top: 197px;
+  left: 10px;
+}
+
+.shop-card-description h2 {
+  font-size: 22px;
+  color: #aaaaaa;
+}
+
+.shop-card-description p {
+  font-size: 12px;
+  color: #aaaaaa;
+}
+
+.shop-card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  background: #60aee2;
+  border-radius: 15px;
+  opacity: 0;
+}
+
+.shop-card-link:hover {
+  opacity: 0.2;
+}
+
+.shop-sidebar li .submenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.shop-sidebar .nav-link {
+  font-size: 20px;
+  font-weight: 500;
+  color: #556270;
+}
+
+.shop-sidebar .nav-link:hover {
+  color: #3498db;
+}
+
+.shop-sidebar .sidebar-title {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 15px 0 0;
+  margin: 25px 0 15px 15px;
+  color: #556270;
+  position: relative;
+}
+
+.shop-sidebar .sidebar-item {
+  margin-bottom: 30px;
+}
+
+.shop-sidebar .recent-products .shop-item+.shop-item {
+  margin-top: 15px;
+}
+
+.shop-sidebar .recent-products img {
+  width: 80px;
+  float: left;
+}
+
+.shop-sidebar .recent-products h4 {
+  font-size: 18px;
+  margin-left: 95px;
+}
+
+.shop-sidebar .recent-products h4 a {
+  color: #556270;
+  transition: 0.3s;
+}
+
+.shop-sidebar .recent-products h4 a:hover {
+  color: #3498db;
+}
+
+.shop-sidebar .recent-products p {
+  display: block;
+  margin-left: 95px;
+  font-style: italic;
+  font-size: 14px;
+  color: #aaaaaa;
+}
+
+.shop-sidebar .search-form form {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 3px 10px;
+  position: relative;
+}
+
+.shop-sidebar .search-form form input[type=text] {
+  border: 0;
+  padding: 4px;
+  border-radius: 4px;
+  width: calc(100% - 40px);
+}
+
+.shop-sidebar .search-form form button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 15px;
+  margin: -1px;
+  background: #3498db;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 0 4px 4px 0;
+  line-height: 0;
+}
+
+.shop-sidebar .search-form form button i {
+  line-height: 0;
+}
+
+.shop-sidebar .search-form form button:hover {
+  background: #de323c;
+}
+
+/* .shop-details-slider img {
+  width: 100%;
+}
+
+.shop-details-slider .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.shop-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  opacity: 1;
+  border: 1px solid #3498db;
+}
+
+.shop-details-slider .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: #3498db;
+} */
+
+.shop-detail-description {
+  padding-top: 1px;
+}
+
+.shop-detail-description h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.shop-detail-description p {
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
 .team .member {
@@ -1617,6 +1818,7 @@ section {
 
 .breadcrumbs h2 {
   font-size: 28px;
+  color: #556270;
   font-weight: 400;
   margin: 0;
 }

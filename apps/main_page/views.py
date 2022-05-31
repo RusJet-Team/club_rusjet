@@ -1,4 +1,4 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
 from apps.main_page.models import CarouselItem, Partner
@@ -30,9 +30,17 @@ class PortfolioDetailsView(TemplateView):
         return context
 
 
-# def index(request):
-#     # post_list = Post.objects.all()
-#     # paginator = Paginator(post_list, 10)
-#     # page_number = request.GET.get("page")
-#     # page = paginator.get_page(page_number)
-#     return render(request, "index.html")
+def bad_request(request, exception):
+    return render(request, "misc/400.html", {"path": request.path}, status=400)
+
+
+def permission_denied(request, exception):
+    return render(request, "misc/403.html", {"path": request.path}, status=403)
+
+
+def page_not_found(request, exception):
+    return render(request, "misc/404.html", {"path": request.path}, status=404)
+
+
+def server_error(request):
+    return render(request, "misc/500.html", status=500)
