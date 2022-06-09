@@ -14,7 +14,6 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["carousel_items"] = CarouselItem.objects.all()
-        # context["partners"] = Partner.objects.all()
         context["services"] = ServiceItem.objects.all()
         context["news"] = News.objects.all().order_by("-pub_date")[:4]
 
