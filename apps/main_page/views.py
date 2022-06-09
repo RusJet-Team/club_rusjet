@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
+from django.views.generic.detail import DetailView
 
 from apps.main_page.models import CarouselItem, Partner
 from apps.news.models import News
@@ -13,21 +14,17 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["carousel_items"] = CarouselItem.objects.all()
-        context["partners"] = Partner.objects.all()
+        # context["partners"] = Partner.objects.all()
         context["services"] = ServiceItem.objects.all()
         context["news"] = News.objects.all().order_by("-pub_date")[:4]
 
         return context
 
 
-class PortfolioDetailsView(TemplateView):
+class PartnerDetailView(DetailView):
 
-    template_name = "partners.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["partners"] = Partner.objects.all()
-        return context
+    model = Partner
+    template_name = "main-page/partners-detail.html"
 
 
 def bad_request(request, exception):

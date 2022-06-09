@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block content %}
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>{{ object.name}}</h2>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio-details" class="portfolio-details">
+
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+        <img src="{{ object.image.url }}" class="rounded mx-auto d-block mb-4" alt="...">
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-12 mb-4">
+        <div class="portfolio-description">
+            <h2>{{ object.short_description }}</h2>
+            <p>{{ object.text|safe }}</p>
+        </div>
+        </div>
+        {% if object.url %}
+        <div class="col-lg-4 col-md-8 col-sm-12">
+        <a href="{{ object.url }}" class="btn btn-primary btn-lg" style="background-color: #3498DB !important; border-color: #3498DB;">Смотреть оборудование партнёра</a>
+        </div>
+        {% endif %}
+
+
+    </div>
+
+  </div>
+</section>
+{% endblock %}

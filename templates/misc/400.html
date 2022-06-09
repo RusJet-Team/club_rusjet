@@ -4,17 +4,14 @@
 {% block title %}Ошибка 400{% endblock %}
 
 {% block content %}
-<main>
-
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Ошибка 400</h1>
-            <p class="lead">Сервер не смог обработать запрос, отправленный клиентом из-за неверного синтаксиса.</p>
-            <p class="lead"><a href="{% url 'index' %}">Вернуться на главную</a></p>
-        </div>
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">400</h1>
+        <p class="fs-3"> <span class="text-danger">Ой...</span> Некорректный запрос.</p>
+        <p class="lead">
+            Не удалось найти с заданными параметрами URL.
+            </p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную</a>
     </div>
-
-
-</main>
-
+ </div>
 {% endblock %}

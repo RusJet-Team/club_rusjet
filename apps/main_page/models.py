@@ -1,5 +1,8 @@
+from ckeditor.fields import RichTextField
 from django.core.exceptions import ValidationError
 from django.db import models
+
+from config.utils.slugify import slugify
 
 
 class CarouselItem(models.Model):
@@ -49,19 +52,35 @@ class Partner(models.Model):
         verbose_name="Название партнёра",
         unique=True,
     )
+    short_description = models.CharField(
+        max_length=250,
+        verbose_name="Краткое описание",
+        blank=True,
+    )
     image = models.ImageField(
         upload_to="images/partners",
         verbose_name="Логотип партнёра",
     )
+    text = RichTextField(
+        verbose_name="Подробное описание",
+        blank=True,
+    )
     url = models.URLField(
         max_length=200,
         blank=True,
-        verbose_name="Ссылка на сайт",
+        verbose_name="Ссылка на страницу с оборудованием",
+        help_text="Если оставить пустым, нельзя будет указать ссылку на страницу с оборудованием",
+    )
+    slug = models.SlugField(
+        unique=True,
+        null=True,
+        verbose_name="Url партнёра на сайте",
+        help_text="Если оставить пустым, заполнится транслитом название партнёра",
     )
 
     class Meta:
-        verbose_name = "Партнёр внизу страницы"
-        verbose_name_plural = "Партнёры внизу страницы"
+        verbose_name = "Партнёр"
+        verbose_name_plural = "Партнёры"
 
     def __str__(self):
         return self.name
@@ -70,3 +89,8 @@ class Partner(models.Model):
         if Partner.objects.count() > 10:
             raise ValidationError("Можно указать только 10 партнёров.")
         return super().clean()
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)

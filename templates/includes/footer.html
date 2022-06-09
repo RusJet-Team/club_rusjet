@@ -1,7 +1,11 @@
 {% load static %}
 <footer id="footer" class="pt-4 my-md-5 pt-md-5 border-top">
   <div class="container">
-    <p class="m-0 text-dark text-center ">C лёгкостью ветра взлети над суетой!</p>
+    <div class="row">
+        <i class="m-0 text-dark text-center ri-mail-send-line"><p><a href="mailto:info@rusjet.ru">info@rusjet.ru</a></p></i>
+        <i class="m-0 text-dark text-center ri-phone-line"><p><a href="tel:+79055432427">+7 (905) 543-24-27</a></p></i>
+    </div>
     <p class="m-0 text-dark text-center "><img src="{% static '/assets/img/logo_footer.png' %}" alt="" class="img-fluid" width="100" height="200"><strong>©</strong></p>
     <p class="m-0 text-dark text-center "> {{ year }}. Все права защищены.</p>
+  </div>
 </footer>

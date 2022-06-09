@@ -24,16 +24,6 @@ class HistoryView(TemplateView):
         return context
 
 
-class AchievementsView(TemplateView):
-
-    template_name = "club/achievements.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["achievements"] = get_object_or_404(HalfStaticPage, slug="achievements")
-        return context
-
-
 class PerformancesView(TemplateView):
 
     template_name = "club/performances.html"

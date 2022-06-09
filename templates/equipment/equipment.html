@@ -3,273 +3,163 @@
 
 {% block title %}Оборудование{% endblock %}
 
-
-
-
 {% block content %}
-
-<script type="text/javascript">
-
-  document.addEventListener("DOMContentLoaded", function () {
-
-    document.querySelectorAll('.shop-sidebar .nav-link').forEach(function (element) {
-
-      element.addEventListener('click', function (e) {
-
-        let nextEl = element.nextElementSibling;
-        let parentEl = element.parentElement;
-
-        if (nextEl) {
-          e.preventDefault();
-          let mycollapse = new bootstrap.Collapse(nextEl);
-
-          if (nextEl.classList.contains('show')) {
-            mycollapse.hide();
-          } else {
-            mycollapse.show();
-            // find other submenus with class=show
-            var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
-            // if it exists, then close all of them
-            if (opened_submenu) {
-              new bootstrap.Collapse(opened_submenu);
-            }
-
-          }
-        }
-
-      });
-    })
-
-  });
-    // DOMContentLoaded  end
-</script>
-<main>
-  <section id="breadcrumbs" class="breadcrumbs">
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-        <h2>Оборудование</h2>
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+      <h2>Оборудование</h2>
+      </div>
+  </div>
+  </section>
+<section id="shop" class="shop section-bg">
+    <div class="container" data-aos="fade-up" data-aos-duration="300">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          {% include 'equipment/includes/sidebar.html' %}
         </div>
-    </div>
-    </section>
-  <section id="shop" class="shop section-bg">
-      <div class="container" data-aos="fade-up" data-aos-duration="300">
-        <div class="row">
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <nav class="shop-sidebar card py-2 mb-4">
-              <div class="sidebar-item search-form">
-                <form action="{% url 'search_results' %}" method="get">
-                <input name="search" type="text" placeholder="Поиск в оборудовании">
-                <button type="submit"><i class="bi bi-search"></i></button>
-                </form>
-              </div>
-              <ul class="nav flex-column" id="nav_accordion">
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="#"> Оборудование</a>
-                </li> -->
-                <li class="nav-item has-submenu">
-                  <a class="nav-link" href="#">Двигатели<i class="bi small bi-caret-down-fill"></i> </a>
-                  <ul class="submenu active">
-                    <li><a class="nav-link" href="#">Турбореактивные двигатели</a></li>
-                    <li><a class="nav-link" href="#">Турбовинтовые двигатели</a></li>
-                    <li><a class="nav-link" href="#">Бензиновые двигатели</a> </li>
-                  </ul>
-                </li>
-                <li class="nav-item has-submenu">
-                  <a class="nav-link" href="#">Электроника<i class="bi small bi-caret-down-fill"></i> </a>
-                  <ul class="submenu collapse">
-                    <li><a class="nav-link" href="#">Системы бортового питания</a></li>
-                    <li><a class="nav-link" href="#">Рулевые машинки</a></li>
-                    <li><a class="nav-link" href="#">Гироскопы</a></li>
-                    <li><a class="nav-link" href="#">Аккумуляторы</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item has-submenu">
-                  <a class="nav-link" href="#">Комплектующие<i class="bi small bi-caret-down-fill"></i> </a>
-                  <ul class="submenu collapse">
-                    <li><a class="nav-link" href="dgferty">Для реактивных двигателей</a></li>
-                    <li><a class="nav-link" href="#">Топливная система</a></li>
-                    <li><a class="nav-link" href="#">Выхлопная система</a></li>
-                    <li><a class="nav-link" href="#">Дымовая система</a></li>
-                  </ul>
-                </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="#"> Demo link </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Menu item </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Something </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"> Other link </a>
-                </li> -->
-              </ul>
-              <h3 class="sidebar-title">Недавно просмотренные</h3>
-              <div class="sidebar-item recent-products">
-                <div class="shop-item clearfix">
-                  <img src="https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png" alt="">
-                  <h4><a href="blog-single.html">PowerBox</a></h4>
-                  <p>Электроника</p>
-                </div>
-                <div class="sidebar-item recent-products">
-                <div class="shop-item clearfix">
-                  <img src="https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png" alt="">
-                  <h4><a href="blog-single.html">PowerBox</a></h4>
-                  <p>Электроника</p>
-                </div>
-                <div class="sidebar-item recent-products">
-                <div class="shop-item clearfix">
-                  <img src="https://www.jetcat.de/jetcat/produkte/2020/P100.jpg" alt="">
-                  <h4><a href="blog-single.html">JetCat P100-RX</a></h4>
+        <div class="col" data-aos="fade-up" data-aos-duration="300">
+          <div class="row">
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
+                <div class="shop-card-category">JetCat P100-RX</div>
+                <div class="shop-card-description">
                   <p>Турбины</p>
                 </div>
-                <div class="sidebar-item recent-products">
-                <div class="shop-item clearfix">
-                  <img src="https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png" alt="">
-                  <h4><a href="blog-single.html">PowerBox</a></h4>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}#details"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
                   <p>Электроника</p>
                 </div>
-            </nav>
-
-          </div>
-          <div class="col" data-aos="fade-up" data-aos-duration="300">
-            <div class="row">
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
-                  <div class="shop-card-category">JetCat P100-RX</div>
-                  <div class="shop-card-description">
-                    <p>Турбины</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}#details"></a>
               </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
-                  <div class="shop-card-category">JetCat P100-RX</div>
-                  <div class="shop-card-description">
-                    <p>Турбины</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
-                  <div class="shop-card-category">JetCat P100-RX</div>
-                  <div class="shop-card-description">
-                    <p>Турбины</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
-                  <div class="shop-card-category">JetCat P100-RX</div>
-                  <div class="shop-card-description">
-                    <p>Турбины</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-              <div class="col-auto mb-2">
-                <div class="shop-card"
-                  style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
-                  <div class="shop-card-category">PowerBox</div>
-                  <div class="shop-card-description">
-                    <p>Электроника</p>
-                  </div>
-                  <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
-                </div>
-              </div>
-
-
-
-
-
             </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
+                  <p>Электроника</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}#details"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
+                <div class="shop-card-category">JetCat P100-RX</div>
+                <div class="shop-card-description">
+                  <p>Турбины</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
+                  <p>Электроника</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
+                  <p>Электроника</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
+                <div class="shop-card-category">JetCat P100-RX</div>
+                <div class="shop-card-description">
+                  <p>Турбины</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
+                  <p>Электроника</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
+                  <p>Электроника</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.jetcat.de/jetcat/produkte/2020/P100.jpg');">
+                <div class="shop-card-category">JetCat P100-RX</div>
+                <div class="shop-card-description">
+                  <p>Турбины</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}#details"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
+                  <p>Электроника</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+            <div class="col-auto mb-2">
+              <div class="shop-card"
+                style="background: url('https://www.powerbox-systems.com/typo3temp/pics/c313a50095.png');">
+                <div class="shop-card-category">PowerBox</div>
+                <div class="shop-card-description">
+                  <p>Электроника</p>
+                </div>
+                <a class="shop-card-link" href="{% url 'equipment-detail' %}"></a>
+              </div>
+            </div>
+
+
+
+
+
           </div>
-
-
-
         </div>
+
+
+      <div class="shop-pagination">
+        <ul class="justify-content-center">
+            <li><a href="?page=1">1</a></li>
+            <li class="active"><a href="#">1 из 2</a></li>
+            <li><a href="?page=2">2</a></li>
+        </ul>
       </div>
 
 
-  </section>
+      </div>
+    </div>
 
-</main>
+
+</section>
 {% endblock %}

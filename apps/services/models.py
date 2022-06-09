@@ -21,7 +21,7 @@ class ServiceItem(models.Model):
     slug = models.SlugField(
         unique=True,
         null=True,
-        verbose_name="Адрес услуги в url сайта",
+        verbose_name="Url услуги на сайте",
         help_text="Если оставить пустым, заполнится транслитом название услуги",
     )
     text = RichTextField(
