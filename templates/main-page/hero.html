@@ -1,32 +1,32 @@
  {% load static %}
- <section id="hero">
-    <div id="heroCarousel" data-bs-interval="3000" class="carousel slide carousel-fade" data-bs-touch="true" data-bs-ride="carousel">
+<section id="hero">
+  <div id="heroCarousel" data-bs-interval="3000" class="carousel slide carousel-fade" data-bs-touch="true" data-bs-ride="carousel">
 
-      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+    <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-      <div class="carousel-inner" role="listbox">
-        {% for item in carousel_items %}
+    <div class="carousel-inner" role="listbox">
+      {% for item in carousel_items %}
 
-        <div class="carousel-item {% if forloop.first %} active{% endif %}" style="background-image: url('/media/{{ item.image.name }}')">
-          <div class="carousel-container">
-            <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">{{ item.title }}</h2>
-              <p class="animate__animated animate__fadeInUp">{{ item.text }}</p>
-              <a href="{{ item.button_url }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">{{ item.button_text }}</a>
-            </div>
+      <div class="carousel-item {% if forloop.first %} active{% endif %}" style="background-image: url('/media/{{ item.image.name }}')">
+        <div class="carousel-container">
+          <div class="container">
+            <h2 class="animate__animated animate__fadeInDown">{{ item.title }}</h2>
+            <p class="animate__animated animate__fadeInUp">{{ item.text }}</p>
+            <a href="{{ item.button_url }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">{{ item.button_text }}</a>
           </div>
         </div>
-
-        {% endfor %}
       </div>
 
-      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-      </a>
-
-      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-      </a>
-
+      {% endfor %}
     </div>
-  </section>
+
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+    </a>
+
+  </div>
+</section>

@@ -1,16 +1,18 @@
 {% load static %}
+{% load partners %}
 <section id="clients" class="clients clients">
-    <div class="container">
+  <div class="container">
 
-      <div class="row">
-        {% for partner in partners %}
+    <div class="row">
+      {% get_partners as partners %}
+      {% for partner in partners %}
 
-        <div class="col-lg-2 col-md-4 col-6">
-          <a href="{{ partner.url }}"><img src="{{ partner.image.url }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0 }}00"></a>
-        </div>
-
-        {% endfor %}
+      <div class="col-lg-2 col-md-4 col-6">
+        <a href="{% url 'partners' partner.slug %}"><img src="{{ partner.image.url }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0 }}00"></a>
       </div>
 
+      {% endfor %}
     </div>
-  </section>
+
+  </div>
+</section>

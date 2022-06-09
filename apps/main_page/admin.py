@@ -21,6 +21,7 @@ class PartnerAdmin(AdminImagePreview, admin.ModelAdmin):
         "image_preview_list_page",
     )
     readonly_fields = ("image_preview_change_page",)
+    exclude = ("slug",)
 
 
 admin.site.site_header = "Администрирование сайта клуба "

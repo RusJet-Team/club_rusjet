@@ -16,7 +16,8 @@ class PartnerFactory(factory.django.DjangoModelFactory):
         model = Partner
 
     name = factory.Faker("company", locale="ru_RU")
-    url = factory.Faker("url", locale="ru_RU")
+    short_description = factory.Faker("text", max_nb_chars=250, locale="ru_RU")
+    text = factory.Faker("text", max_nb_chars=1000, locale="ru_RU")
 
     @factory.post_generation
     def image(self, created, extracted, **kwargs):

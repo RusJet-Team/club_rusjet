@@ -1,28 +1,28 @@
 {% load static %}
 <section id="more-services" class="more-services">
-    <div class="container">
+  <div class="container">
 
-      <div class="section-title" data-aos="fade-up">
-        <h2>Последние новости</h2>
-      </div>
+    <div class="section-title" data-aos="fade-up">
+      <h2>Последние новости</h2>
+    </div>
 
-      <div class="row">
-        {% for news_item in news %}
-        <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-4">
-          <div class="card" style="background-image: url('/media/{{ news_item.image.name }}');" data-aos="fade-up"
-            data-aos-delay="100">
-            <div class="card-body">
-              <h5 class="card-title"><a href="{% url 'news_detail' news_item.pk %}">{{ news_item.name }}</a></h5>
-              <p class="card-text">{{ news_item.title }}</p>
-                  <li class="card-text d-flex">
-                    <a><time datetime="{{ news_item.pub_date }}">{{ news_item.pub_date }}</time></a>
-                  </li>
-              <div class="read-more"><a href="{% url 'news_detail' news_item.pk %}"><i class="bi bi-arrow-right"></i> Подробнее</a></div>
-            </div>
+    <div class="row">
+      {% for news_item in news %}
+      <div class="col-md-6 d-flex align-items-stretch mt-4 mt-md-4">
+        <div class="card" style="background-image: url('/media/{{ news_item.image.name }}');" data-aos="fade-up"
+          data-aos-delay="100">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'news_detail' news_item.pk %}">{{ news_item.name }}</a></h5>
+            <p class="card-text">{{ news_item.title }}</p>
+                <li class="card-text d-flex">
+                  <a><time datetime="{{ news_item.pub_date }}">{{ news_item.pub_date }}</time></a>
+                </li>
+            <div class="read-more"><a href="{% url 'news_detail' news_item.pk %}"><i class="bi bi-arrow-right"></i> Подробнее</a></div>
           </div>
         </div>
-        {% endfor %}
       </div>
-
+      {% endfor %}
     </div>
-  </section>
+
+  </div>
+</section>

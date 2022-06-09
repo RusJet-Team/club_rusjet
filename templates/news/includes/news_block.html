@@ -1,45 +1,45 @@
 {% for news_item in object_list %}
-                <article class="entry">
-                <div class="entry-img">
-                    <img src="{{ news_item.image.url }}" alt="" class="img-fluid">
-                </div>
-                <h2 class="entry-title">
-                    <a href="{% url 'news_detail' news_item.pk %}">{{ news_item.name }}</a>
-                </h2>
-                <div class="entry-meta">
-                    <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{ news_item.pub_user.first_name }} {{ news_item.pub_user.last_name }}</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time datetime="{{ news_item.pub_date }}">{{ news_item.pub_date }}</time></a></li>
-                    </ul>
-                </div>
-                <div class="entry-content">
-                    <p>{{ news_item.title }}</p>
-                    <div class="read-more">
-                    <a href="{% url 'news_detail' news_item.pk %}">Читать</a>
-                    </div>
-                </div>
-                </article>
-                {% empty %}
-                 <article class="entry">
-                <h2 class="entry-title">
-                    {% if 'search-results/' in request.path %}
-                    <a>К сожалению, ничего не нашлось</a>
-                    {% else %}
-                    <a>Пока нет новостей...</a>
-                    {% endif %}
-                </h2>
-                </article>
-                {% endfor %}
-                {% if is_paginated %}
-                <div class="blog-pagination">
-                    <ul class="justify-content-center">
-                        {% if page_obj.has_previous %}
-                        <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
-                        {% endif %}
-                        <li class="active"><a href="#">{{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</a></li>
-                        {% if page_obj.has_next %}
-                        <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
-                        {% endif %}
-                    </ul>
-                    </div>
-                    {% endif %}
+    <article class="entry">
+    <div class="entry-img">
+        <img src="{{ news_item.image.url }}" alt="" class="img-fluid">
+    </div>
+    <h2 class="entry-title">
+        <a href="{% url 'news_detail' news_item.pk %}">{{ news_item.name }}</a>
+    </h2>
+    <div class="entry-meta">
+        <ul>
+        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{ news_item.pub_user.first_name }} {{ news_item.pub_user.last_name }}</a></li>
+        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time datetime="{{ news_item.pub_date }}">{{ news_item.pub_date }}</time></a></li>
+        </ul>
+    </div>
+    <div class="entry-content">
+        <p>{{ news_item.title }}</p>
+        <div class="read-more">
+        <a href="{% url 'news_detail' news_item.pk %}">Читать</a>
+        </div>
+    </div>
+    </article>
+    {% empty %}
+        <article class="entry">
+    <h2 class="entry-title">
+        {% if 'search-results/' in request.path %}
+        <a>К сожалению, ничего не нашлось</a>
+        {% else %}
+        <a>Пока нет новостей...</a>
+        {% endif %}
+    </h2>
+    </article>
+    {% endfor %}
+    {% if is_paginated %}
+    <div class="blog-pagination">
+        <ul class="justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+            {% endif %}
+            <li class="active"><a href="#">{{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</a></li>
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a></li>
+            {% endif %}
+        </ul>
+        </div>
+        {% endif %}

@@ -2,53 +2,51 @@
 {% load static %}
 {% block title %}{{ object.name }}{% endblock %}
 {% block content %}
-<main>
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
-          <div class="d-flex justify-content-between align-items-center">
-            <h2>{{ object.name }}</h2>
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>{{ object.name }}</h2>
+      </div>
+    </div>
+</section>
+<section id="blog" class="blog">
+  <div class="container" data-aos="fade-up">
+    <div class="row">
+      <div class="col-lg-8 entries">
+        <article class="entry entry-single">
+          <div class="entry-img">
+            <img src="{{ object.image.url }}" alt="" class="img-fluid">
           </div>
-        </div>
-      </section>
-      <section id="blog" class="blog">
-        <div class="container" data-aos="fade-up">
-          <div class="row">
-            <div class="col-lg-8 entries">
-              <article class="entry entry-single">
-                <div class="entry-img">
-                  <img src="{{ object.image.url }}" alt="" class="img-fluid">
-                </div>
-                <h2 class="entry-title">
-                  <a>{{ object.title }}</a>
-                </h2>
-                <div class="entry-meta">
-                  <ul>
-                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{ object.pub_user.first_name }} {{ object.pub_user.last_name }}</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time datetime="{{ object.pub_date }}">{{ object.pub_date }}</time></a></li>
-                  </ul>
-                </div>
-                <div class="entry-content">
-                  {{ object.text|safe }}
-                  {% if object.geolocation_url %}
-                    <div class="col-md-8 mx-auto">
-                      {{ object.geolocation_url|safe }}
-                    </div>
-                  {% endif %}
-                </div>
-                <div class="entry-footer">
-                  <i class="bi bi-tags"></i>
-                  <ul class="tags">
-                    {% for category in object.category.all %}
-                    <li><a>{{ category.name }}</a></li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </article>
-            </div>
-            <div class="col-lg-4">
-              {% include 'news/includes/sidebar.html' %}
-            </div>
-        </div>
-      </section>
-</main>
+          <h2 class="entry-title">
+            <a>{{ object.title }}</a>
+          </h2>
+          <div class="entry-meta">
+            <ul>
+              <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{ object.pub_user.first_name }} {{ object.pub_user.last_name }}</a></li>
+              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time datetime="{{ object.pub_date }}">{{ object.pub_date }}</time></a></li>
+            </ul>
+          </div>
+          <div class="entry-content">
+            {{ object.text|safe }}
+            {% if object.geolocation_url %}
+              <div class="col-md-8 mx-auto">
+                {{ object.geolocation_url|safe }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="entry-footer">
+            <i class="bi bi-tags"></i>
+            <ul class="tags">
+              {% for category in object.category.all %}
+              <li><a>{{ category.name }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </article>
+      </div>
+      <div class="col-lg-4">
+        {% include 'news/includes/sidebar.html' %}
+      </div>
+  </div>
+</section>
 {% endblock %}

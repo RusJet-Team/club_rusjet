@@ -4,18 +4,14 @@
 {% block title %}Ошибка 403{% endblock %}
 
 {% block content %}
-<main>
-
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>Ошибка 403</h1>
-                <p class="lead">Доступ <span style="color:red">ЗАПРЕЩЁН</span></p>
-            </div>
-        </div>
-    </main>
-
-
-</main>
-
+<div class="d-flex align-items-center justify-content-center vh-100">
+    <div class="text-center">
+        <h1 class="display-1 fw-bold">403</h1>
+        <p class="fs-3"> <span class="text-danger">Ну...</span> Доступ запрещён.</p>
+        <p class="lead">
+            Возможно мы от вас что-то скрываем или не готовы показать.
+            </p>
+        <a href="{% url 'index' %}" class="btn btn-primary">Вернуться на главную</a>
+    </div>
+</div>
 {% endblock %}
