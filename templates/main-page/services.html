@@ -1,5 +1,5 @@
 {% load static %}
-<section id="services" class="services">
+<section id="services" class="services section-bg">
   <div class="container">
 
     <div class="section-title" data-aos="fade-up">
@@ -11,7 +11,7 @@
       {% for service in services %}
       <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0 gy-3">
         <div class="icon-box" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
-          <div class="icon"><img src="{{ service.image.url }}" class="img-fluid" alt="" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00"></div>
+          <div class="icon"><a href="{% url 'serviceitem-detail' service.slug %}"><img src="{{ service.image.url }}" class="img-fluid" alt="" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00"></a></div>
           <h4 class="title"><a href="{% url 'serviceitem-detail' service.slug %}">{{ service.name }}</a></h4>
           <p class="description">{{ service.short_description }}</p>
         </div>
