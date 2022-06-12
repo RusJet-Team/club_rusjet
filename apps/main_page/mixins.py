@@ -19,6 +19,11 @@ class AdminImagePreview:
         if obj.image:
             return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
 
+    @admin.display(description="Превью изображения")
+    def image_preview(self, obj):
+        if obj.image:
+            return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
+
 
 class HideOnNavPanelAdminModelMixin:
     """Mixin hides model from admin main page(nav. panel)."""

@@ -5,7 +5,7 @@ from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMix
 from apps.services.models import ServiceCarouselImage, ServiceItem
 
 
-class ServiceCarouselImagesInline(admin.TabularInline):
+class ServiceCarouselImagesInline(AdminImagePreview, admin.TabularInline):
     model = ServiceCarouselImage
     readonly_fields = ("image_preview",)
     verbose_name = "Изображение"
@@ -13,11 +13,6 @@ class ServiceCarouselImagesInline(admin.TabularInline):
     extra = 1
     classes = ("collapsible",)
     model.__str__ = lambda self: ""
-
-    @admin.display(description="Превью изображения")
-    def image_preview(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
 
 
 @admin.register(ServiceItem)

@@ -14,7 +14,7 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
     readonly_fields = ("image_preview_change_page",)
 
 
-class HalfStaticPageImageInline(admin.TabularInline):
+class HalfStaticPageImageInline(AdminImagePreview, admin.TabularInline):
     model = HalfStaticPageImage
     readonly_fields = (
         "image_preview",
@@ -25,11 +25,6 @@ class HalfStaticPageImageInline(admin.TabularInline):
     extra = 1
     classes = ("collapsible",)
     model.__str__ = lambda self: ""
-
-    @admin.display(description="Превью изображения")
-    def image_preview(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
 
     @admin.display(description="Ссылка для вставки в редактор")
     def image_url(self, obj):
