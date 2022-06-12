@@ -15,7 +15,7 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
 
 
 class HalfStaticPageImageInline(admin.TabularInline):
-    model = HalfStaticPage.images.through
+    model = HalfStaticPageImage
     readonly_fields = (
         "image_preview",
         "image_url",
@@ -28,19 +28,13 @@ class HalfStaticPageImageInline(admin.TabularInline):
 
     @admin.display(description="Превью изображения")
     def image_preview(self, obj):
-        if obj.halfstaticpageimage:
-            print(dir(obj.halfstaticpageimage.image))
-            return format_html(
-                '<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.halfstaticpageimage.image.url)
-            )
+        if obj.image:
+            return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
 
     @admin.display(description="Ссылка для вставки в редактор")
     def image_url(self, obj):
-        if obj.halfstaticpageimage:
-            return format_html(
-                f'<a href="{obj.halfstaticpageimage.image.url}">Ссылка</a>'
-                f"<br /><a>Скопируйте и вставьте в редактор</a>"
-            )
+        if obj.image:
+            return format_html(f'<a href="{obj.image.url}">Ссылка</a>' f"<br /><a>Скопируйте и вставьте в редактор</a>")
 
 
 @admin.register(HalfStaticPage)

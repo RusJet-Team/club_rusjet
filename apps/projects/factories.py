@@ -29,32 +29,14 @@ class ProjectFactory(factory.django.DjangoModelFactory):
     text = factory.Faker("text", max_nb_chars=1000, locale="ru_RU")
     category = factory.Iterator(ProjectCategory.objects.all(), cycle=True)
 
-    @factory.post_generation
-    def images(self, create, extracted, **kwargs):
-        if not create:
-            return
-
-        if extracted:
-            images = extracted
-            self.images.add(*images)
-            return
-
-        at_least = 1
-        num = kwargs.get("num", None)
-        how_many = num or at_least
-
-        images_count = ProjectImage.objects.count()
-        how_many = min(images_count, how_many)
-
-        images = ProjectImage.objects.order_by("?")[:how_many]
-        self.images.add(*images)
-
 
 class ProjectImageFactory(factory.django.DjangoModelFactory):
     """Create ProjectImage objects."""
 
     class Meta:
         model = ProjectImage
+
+    project = factory.Iterator(Project.objects.all(), cycle=True)
 
     @factory.post_generation
     def image(self, created, extracted, **kwargs):

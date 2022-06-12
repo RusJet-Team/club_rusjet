@@ -6,7 +6,7 @@ from apps.projects.models import Project, ProjectCategory, ProjectImage
 
 
 class ProjectImagesInline(admin.TabularInline):
-    model = Project.images.through
+    model = ProjectImage
     readonly_fields = ("image_preview",)
     verbose_name = "Изображение"
     verbose_name_plural = "Изображения"
@@ -16,20 +16,19 @@ class ProjectImagesInline(admin.TabularInline):
 
     @admin.display(description="Превью изображения")
     def image_preview(self, obj):
-        if obj.projectimage:
-            return format_html(
-                '<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.projectimage.image.url)
-            )
+        if obj.image:
+            return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
 
 
 @admin.register(Project)
-class Projectdmin(AdminImagePreview, admin.ModelAdmin):
+class ProjectAdmin(AdminImagePreview, admin.ModelAdmin):
     inlines = (ProjectImagesInline,)
     list_display = (
         "name",
         "category",
     )
     exclude = ("images",)
+    list_filter = ("category",)
     # fields = (
     #     "name",
     #     "short_description",
@@ -41,8 +40,8 @@ class Projectdmin(AdminImagePreview, admin.ModelAdmin):
 
 
 @admin.register(ProjectCategory)
-class ProjectCategoryAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+class ProjectCategoryAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
+    pass
 
 
 @admin.register(ProjectImage)

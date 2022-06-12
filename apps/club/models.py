@@ -52,10 +52,6 @@ class HalfStaticPage(models.Model):
     text = RichTextField(
         verbose_name="Текст",
     )
-    images = models.ManyToManyField(
-        "HalfStaticPageImage",
-        verbose_name="Изображения на статических страницах",
-    )
 
     class Meta:
         verbose_name = "Статическая страница"
@@ -68,7 +64,12 @@ class HalfStaticPage(models.Model):
 class HalfStaticPageImage(models.Model):
     image = models.ImageField(
         upload_to="images/club/staticpages/",
-        verbose_name="Изображения в карусели услуги",
+        verbose_name="Изображения для вставки на страницу",
+    )
+    page = models.ForeignKey(
+        HalfStaticPage,
+        on_delete=models.CASCADE,
+        verbose_name="Статическая страница",
     )
 
     class Meta:
@@ -76,4 +77,5 @@ class HalfStaticPageImage(models.Model):
         verbose_name_plural = "Изображения статических страниц"
 
     def __str__(self):
-        return self.image.name
+        image_name = (self.image.name).split("/")[-1]
+        return image_name

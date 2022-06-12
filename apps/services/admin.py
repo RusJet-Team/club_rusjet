@@ -6,7 +6,7 @@ from apps.services.models import ServiceCarouselImage, ServiceItem
 
 
 class ServiceCarouselImagesInline(admin.TabularInline):
-    model = ServiceItem.carousel_images.through
+    model = ServiceCarouselImage
     readonly_fields = ("image_preview",)
     verbose_name = "Изображение"
     verbose_name_plural = "Изображения"
@@ -16,10 +16,8 @@ class ServiceCarouselImagesInline(admin.TabularInline):
 
     @admin.display(description="Превью изображения")
     def image_preview(self, obj):
-        if obj.servicecarouselimage:
-            return format_html(
-                '<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.servicecarouselimage.image.url)
-            )
+        if obj.image:
+            return format_html('<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.image.url))
 
 
 @admin.register(ServiceItem)

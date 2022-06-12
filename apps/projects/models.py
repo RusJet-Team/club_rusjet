@@ -46,11 +46,6 @@ class Project(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Категории",
     )
-    images = models.ManyToManyField(
-        "ProjectImage",
-        related_name="project_images",
-        verbose_name="Изображения",
-    )
 
     def __str__(self):
         return self.name
@@ -72,7 +67,12 @@ class Project(models.Model):
 class ProjectImage(models.Model):
     image = models.ImageField(
         upload_to="images/projects/detail/",
-        verbose_name="Изображение",
+        verbose_name="Изображение проекта",
+    )
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        verbose_name="Проект",
     )
 
     class Meta:
@@ -80,4 +80,5 @@ class ProjectImage(models.Model):
         verbose_name_plural = "Изображения проекта"
 
     def __str__(self):
-        return self.image.name
+        image_name = (self.image.name).split("/")[-1]
+        return image_name
