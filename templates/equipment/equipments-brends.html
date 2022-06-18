@@ -1,0 +1,18 @@
+{% extends "equipment/equipment-base.html" %}
+{% load static %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block breadcrumbs %}{{ object.name }}{% endblock %}
+
+{% block shop %}
+{% for object in objects %}
+  <div class="col-auto mb-2">
+    <div class="shop-card"
+      style="background: url('{{ object.equipmentitemimage_set.first.image.url }}');">
+      <div class="shop-card-category">{{ object.name }}</div>
+      <a class="shop-card-link" href="{% url 'equipment-item' category_slug=object.brend.subcategory.category.category_slug subcategory_slug=object.brend.subcategory.subcategory_slug brend_slug=object.brend.brend_slug pk=object.pk %}#content"></a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

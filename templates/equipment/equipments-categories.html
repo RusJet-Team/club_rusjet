@@ -1,0 +1,18 @@
+{% extends "equipment/equipment-base.html" %}
+{% load static %}
+
+{% block title %}{{ object.name }}{% endblock %}
+
+{% block breadcrumbs %}{{ object.name }}{% endblock %}
+
+{% block shop %}
+{% for subcategory in subcategories %}
+  <div class="col-auto mb-2">
+    <div class="shop-card"
+      style="background: url('{{ subcategory.image.url }}');">
+      <div class="shop-card-category">{{ subcategory.name }}</div>
+      <a class="shop-card-link" href="{% url 'equipment-subcategories' category_slug=subcategory.category.category_slug subcategory_slug=subcategory.subcategory_slug %}#content"></a>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

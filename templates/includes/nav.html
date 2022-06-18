@@ -1,6 +1,7 @@
 {% load static %}
 
 {% load nav_services %}
+{% load equip_sidebar %}
 
  <header id="header" class="fixed-top d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
@@ -26,54 +27,28 @@
             {% endfor %}
           </ul>
         </li>
-        <li class="dropdown active"><a href="{% url 'equipment' %}"><span>Оборудование</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown active"><a href="{% url 'equipments' %}"><span>Оборудование</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            <li class="dropdown"><a href="{% url 'equipment' %}"><span>Двигатели</span> <i class="bi bi-chevron-right"></i></a>
+          {% get_categories as categories %}
+          {% for category in categories %}
+            <li class="dropdown"><a href="#"><span>{{ category.name }}</span> <i class="bi bi-chevron-right"></i></a>
               <ul>
-                <li><a href="{% url 'equipment' %}">Турбореактивные двигатели</a></li>
-                <li><a href="{% url 'equipment' %}">Турбовинтовые двигатели</a></li>
-                <li><a href="{% url 'equipment' %}">Бензиновые двигатели</a></li>
+              {% get_subcategories category as subcategories %}
+              {% for subcategory in subcategories %}
+                <li class="dropdown"><a href="#"><span>{{ subcategory.name }}</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                  {% get_brends subcategory as brends %}
+                  {% for brend in brends %}
+                    <li><a href="">{{ brend.name }}</a></li>
+                  {% endfor %}
+                  </ul>
+              {% endfor %}
               </ul>
-            <li class="dropdown"><a href="{% url 'equipment' %}"><span>Электроника</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="{% url 'equipment' %}">Системы бортового питания</a></li>
-                <li><a href="{% url 'equipment' %}">Рулевые машинки</a></li>
-                <li><a href="{% url 'equipment' %}">Гироскопы</a></li>
-                <li><a href="{% url 'equipment' %}">Аккумуляторы</a></li>
-              </ul>
-            <li class="dropdown"><a href="{% url 'equipment' %}"><span>Комплектующие</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="{% url 'equipment' %}">Для реактивных двигателей</a></li>
-                <li><a href="{% url 'equipment' %}">Топливная система</a></li>
-                <li><a href="{% url 'equipment' %}">Выхлопная система</a></li>
-                <li><a href="{% url 'equipment' %}">Дымовая система</a></li>
-              </ul>
+          {% endfor %}
           </ul>
         <li><a class="nav-link scrollto" href="{% url 'projects_list' %}">Проекты</a></li>
         <li><a class="nav-link scrollto" href="{% url 'news_list' %}">Новости</a></li>
-
-        <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
-        <!-- <li><a class="nav-link scrollto" href="#">Team</a></li> -->
-        <!-- <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li> -->
-        <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-                <li><a href="#">Deep Drop Down 3</a></li>
-                <li><a href="#">Deep Drop Down 4</a></li>
-                <li><a href="#">Deep Drop Down 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
-            <li><a href="#">Drop Down 3</a></li>
-            <li><a href="#">Drop Down 4</a></li>
-          </ul>
-        </li> -->
         <li><a class="nav-link scrollto" href="{% url 'index' %}#contact">Контакты</a></li>
-        <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
