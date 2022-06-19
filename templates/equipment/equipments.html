@@ -11,7 +11,7 @@
     <div class="shop-card"
       style="background: url('{{ category.image.url }}');">
       <div class="shop-card-category">{{ category.name }}</div>
-      <a class="shop-card-link" href="{% url 'equipment-categories' category.category_slug %}"></a>
+      <a class="shop-card-link" href="{% url 'equipment-categories' category.category_slug %}#content"></a>
     </div>
   </div>
 {% endfor %}

@@ -962,8 +962,8 @@ section {
 }
 
 .shop-card {
-  height: 220px;
-  width: 200px;
+  height: 300px;
+  width: 300px;
   background-position: center center;
   background-size: contain !important;
   color: rgb(130, 130, 130);
@@ -975,16 +975,17 @@ section {
 
 .shop-card-category {
   position: absolute;
-  top: 170px;
+  top: 260px;
   left: 10px;
   color: #556270;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .shop-card-description {
   position: absolute;
   font-style: italic;
-  top: 197px;
+  color: #556270;
+  top: 240px;
   left: 10px;
 }
 

@@ -95,7 +95,7 @@ class EquipmentItemImageFactory(factory.django.DjangoModelFactory):
         if not created:
             return
 
-        image = urllib.request.urlopen("https://picsum.photos/900/900").read()
+        image = urllib.request.urlopen("https://picsum.photos/400/400").read()
         self.image.save(str(self.id) + ".jpg", ContentFile(image), save=False)
 
 

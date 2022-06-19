@@ -1,6 +1,8 @@
 from ckeditor.fields import RichTextField
+from django.core.exceptions import ValidationError
 from django.db import models
 
+from config.utils.image_change import crop_square_and_resize
 from config.utils.slugify import slugify
 
 
@@ -21,8 +23,8 @@ class EquipmentCategory(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        if not self.category_slug:
+            self.category_slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -56,8 +58,8 @@ class EquipmentSubCategory(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        if not self.subcategory_slug:
+            self.subcategory_slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -98,8 +100,8 @@ class EquipmentBrend(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        if not self.brend_slug:
+            self.brend_slug = slugify(self.name)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -131,6 +133,17 @@ class EquipmentItemImage(models.Model):
     def __str__(self):
         image_name = (self.image.name).split("/")[-1]
         return image_name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img.save(self.image.path)
+
+    def clean(self):
+        height = 400
+        width = 400
+        if self.image.height < height or self.image.width < width:
+            raise ValidationError(f"Размеры изображения должны быть не менее {height}x{width}")
 
 
 class EquipmentItemDocument(models.Model):

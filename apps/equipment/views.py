@@ -1,5 +1,6 @@
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
+from django.views.generic.list import ListView, MultipleObjectMixin
 
 from apps.equipment.models import EquipmentBrend, EquipmentCategory, EquipmentItem, EquipmentSubCategory
 
@@ -47,22 +48,21 @@ class EquipmentSubCategoryDetailView(DetailView):
         return super().get_context_data(**context)
 
 
-class EquipmentBrendDetailView(DetailView):
+class EquipmentBrendDetailView(MultipleObjectMixin, DetailView):
 
     model = EquipmentBrend
     slug_field = "brend_slug"
     slug_url_kwarg = "brend_slug"
     template_name = "equipment/equipments-brends.html"
+    paginate_by = 5
 
     def get_queryset(self):
         return EquipmentBrend.objects.filter(brend_slug=self.kwargs["brend_slug"]).values("name")
 
     def get_context_data(self, **kwargs):
-        context = {}
-        super().get_context_data()
-        context["objects"] = EquipmentItem.objects.filter(brend__brend_slug=self.kwargs["brend_slug"])
-        print(context)
-        return super().get_context_data(**context)
+        object_list = EquipmentItem.objects.filter(brend__brend_slug=self.kwargs["brend_slug"])
+        context = super().get_context_data(object_list=object_list, **kwargs)
+        return context
 
 
 class EquipmentItemDetailView(DetailView):
@@ -71,13 +71,17 @@ class EquipmentItemDetailView(DetailView):
     template_name = "equipment/equipments-detail.html"
 
 
-# class SearchNewsResultsView(ListView):
-#     model = News
-#     template_name = "news/search_results.html"
+class EquipmentItemResultsView(ListView):
+    model = EquipmentItem
+    template_name = "equipment/equip_search_results.html"
 
-#     def get_queryset(self):
-#         query = self.request.GET.get("search")
-#         object_list = News.objects.filter(
-#             Q(name__icontains=query) | Q(title__icontains=query) | Q(text__icontains=query)
-#         )
-#         return object_list
+    def get_queryset(self):
+        query = self.request.GET.get("search")
+        search_vector = SearchVector("name", "title", "brend__name")
+        search_query = SearchQuery(query)
+        object_list = (
+            EquipmentItem.objects.annotate(search=search_vector, rank=SearchRank(search_vector, search_query))
+            .filter(search=search_query)
+            .order_by("-rank")
+        )
+        return object_list

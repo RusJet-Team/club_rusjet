@@ -5,6 +5,7 @@ from apps.equipment.views import (
     EquipmentCategoryDetailView,
     EquipmentCategoryListView,
     EquipmentItemDetailView,
+    EquipmentItemResultsView,
     EquipmentSubCategoryDetailView,
 )
 
@@ -14,6 +15,7 @@ equipments_urls = [
         EquipmentCategoryListView.as_view(),
         name="equipments",
     ),
+    path("search-results/", EquipmentItemResultsView.as_view(), name="equip_search_results"),
     path(
         "<slug:category_slug>/",
         EquipmentCategoryDetailView.as_view(),
