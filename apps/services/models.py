@@ -27,10 +27,6 @@ class ServiceItem(models.Model):
     text = RichTextField(
         verbose_name="Подробное описание",
     )
-    carousel_images = models.ManyToManyField(
-        "ServiceCarouselImage",
-        verbose_name="Изображения в карусели",
-    )
 
     class Meta:
         verbose_name = "Услуга"
@@ -50,10 +46,16 @@ class ServiceCarouselImage(models.Model):
         upload_to="images/services/detail/",
         verbose_name="Изображения в карусели услуги",
     )
+    service = models.ForeignKey(
+        ServiceItem,
+        on_delete=models.CASCADE,
+        verbose_name="Услуга",
+    )
 
     class Meta:
         verbose_name = "Изображение услуги"
         verbose_name_plural = "Изображения услуги"
 
     def __str__(self):
-        return self.image.name
+        image_name = (self.image.name).split("/")[-1]
+        return image_name

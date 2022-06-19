@@ -1,5 +1,3 @@
-import random
-
 import factory
 from django.core.management.base import BaseCommand
 
@@ -63,18 +61,16 @@ class Command(BaseCommand):
 
                 CarouselItemFactory.create_batch(7)
 
-                ServiceCarouselImageFactory.create_batch(30)
+                ServiceItemFactory.create_batch(6)
 
-                for _ in range(7):
-                    nums = random.randint(1, 5)
-                    ServiceItemFactory(carousel_images__num=nums)
+                ServiceCarouselImageFactory.create_batch(18)
 
                 for category_name in PROJECT_CATEGORIES:
                     ProjectCategoryFactory(name=category_name)
 
-                ProjectImageFactory.create_batch(30)
-
                 ProjectFactory.create_batch(20)
+
+                ProjectImageFactory.create_batch(40)
 
             self.stdout.write(self.style.SUCCESS("The database is filled with test data"))
         except MyException:

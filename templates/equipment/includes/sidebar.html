@@ -1,47 +1,35 @@
 {% load static %}
+{% load equip_sidebar %}
 <nav class="shop-sidebar card py-2 mb-4">
     <div class="sidebar-item search-form">
-      <form action="{% url 'search_results' %}" method="get">
+      <form action="{% url 'equip_search_results' %}" method="get">
       <input name="search" type="text" placeholder="Поиск в оборудовании">
       <button type="submit"><i class="bi bi-search"></i></button>
       </form>
     </div>
     <ul class="nav flex-column" id="nav_accordion">
+      {% get_categories as categories %}
+      {% for category in categories %}
       <li class="nav-item has-submenu">
-        <a class="nav-link" href="#">Двигатели<i class="bi small bi-caret-down-fill"></i> </a>
+        <a class="nav-link" href="{% url 'equipment-categories' category.category_slug %}#content">{{ category.name }}<i class="bi small bi-caret-down-fill"></i> </a>
         <ul class="submenu active">
           <li class="nav-item has-submenu">
-            <a class="nav-link" href="#">Турбореактивные двигатели<i class="bi small bi-caret-down-fill"></i> </a>
+          {% get_subcategories category as subcategories %}
+          {% for subcategory in subcategories %}
+            <a class="nav-link" href="{% url 'equipment-subcategories' category_slug=subcategory.category.category_slug subcategory_slug=subcategory.subcategory_slug %}#content">{{ subcategory.name }}<i class="bi small bi-caret-down-fill"></i> </a>
             <ul class="submenu collapse">
-              <li><a class="nav-link" href="#">JetCat</a></li>
-              <li><a class="nav-link" href="#">KingTech</a></li>
+            {% get_brends subcategory as brends %}
+            {% for brend in brends %}
+              <li><a class="nav-link" href="{% url 'equipment-brends' category_slug=brend.subcategory.category.category_slug subcategory_slug=brend.subcategory.subcategory_slug brend_slug=brend.brend_slug %}#content">{{ brend.name }}</a></li>
+            {% endfor %}
             </ul>
           </li>
-          <li><a class="nav-link" href="#">Турбовинтовые двигатели</a></li>
-          <li><a class="nav-link" href="#">Бензиновые двигатели</a> </li>
+          {% endfor %}
         </ul>
       </li>
-      <li class="nav-item has-submenu">
-        <a class="nav-link" href="#">Электроника<i class="bi small bi-caret-down-fill"></i> </a>
-        <ul class="submenu collapse">
-          <li><a class="nav-link" href="#">Системы бортового питания</a></li>
-          <li><a class="nav-link" href="#">Рулевые машинки</a></li>
-          <li><a class="nav-link" href="#">Гироскопы</a></li>
-          <li><a class="nav-link" href="#">Аккумуляторы</a></li>
-        </ul>
-      </li>
-      <li class="nav-item has-submenu">
-        <a class="nav-link" href="#">Комплектующие<i class="bi small bi-caret-down-fill"></i> </a>
-        <ul class="submenu collapse">
-          <li><a class="nav-link" href="#">Для реактивных двигателей</a></li>
-          <li><a class="nav-link" href="#">Топливная система</a></li>
-          <li><a class="nav-link" href="#">Выхлопная система</a></li>
-          <li><a class="nav-link" href="#">Дымовая система</a></li>
-        </ul>
-      </li>
-    </ul>
+      {% endfor %}
     <h3 class="sidebar-title">Недавно просмотренные</h3>
-    <div class="sidebar-item recent-products">
+    <!-- <div class="sidebar-item recent-products">
       <div class="shop-item clearfix">
         <img src="https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png" alt="">
         <h4><a href="blog-single.html">PowerBox</a></h4>
@@ -64,6 +52,6 @@
         <img src="https://www.powerbox-systems.com/uploads/tx_pbsproducts/4450_01_Hauptbild_PB_Competition_SR2.png" alt="">
         <h4><a href="blog-single.html">PowerBox</a></h4>
         <p>Электроника</p>
-      </div>
+      </div> -->
   </nav>
   <script src="{% static '/assets/js/equipSidebar.js' %}"></script>

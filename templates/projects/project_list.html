@@ -6,7 +6,7 @@
 {% block content %}
 {% load tags %}
 <section></section>
-<section id="portfolio" class="portfolio">
+<section id="portfolio" class="portfolio section-bg">
   <div class="container">
 
     <div class="section-title" data-aos="fade-up">
@@ -26,16 +26,16 @@
       </div>
     </div>
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="300">
       {% for project_item in object_list %}
       <div class="col-lg-4 col-md-6 portfolio-item filter-{{ project_item.category.slug }}">
         <div class="portfolio-wrap">
-          <img src="{{ project_item.images.first.image.url }}" class="img-fluid" alt="">
+          <img src="{{ project_item.projectimage_set.first.image.url }}" class="img-fluid" alt="">
           <div class="portfolio-info">
-            <h4>{{ project_item.name }}</h4>
+            <a href="{% url 'projects_detail' project_item.id %}"><h4>{{ project_item.name }}</h4></a>
             <p>{{ project_item.title }}</p>
             <div class="portfolio-links">
-              <a href="{{ project_item.images.first.image.url }}" data-gallery="portfolioGallery"
+              <a href="{{ project_item.projectimage_set.first.image.url }}" data-gallery="portfolioGallery"
                 class="portfolio-lightbox" title="{{ project_item.name }}"><i class="bx bx-move"></i></a>
               <a href="{% url 'projects_detail' project_item.id %}" title="Подробнее"><i class="bx bx-link-external"></i></a>
             </div>

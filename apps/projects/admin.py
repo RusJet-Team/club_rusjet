@@ -1,12 +1,11 @@
 from django.contrib import admin
-from django.utils.html import format_html
 
 from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMixin
 from apps.projects.models import Project, ProjectCategory, ProjectImage
 
 
-class ProjectImagesInline(admin.TabularInline):
-    model = Project.images.through
+class ProjectImagesInline(AdminImagePreview, admin.TabularInline):
+    model = ProjectImage
     readonly_fields = ("image_preview",)
     verbose_name = "Изображение"
     verbose_name_plural = "Изображения"
@@ -14,22 +13,16 @@ class ProjectImagesInline(admin.TabularInline):
     classes = ("collapsible",)
     model.__str__ = lambda self: ""
 
-    @admin.display(description="Превью изображения")
-    def image_preview(self, obj):
-        if obj.projectimage:
-            return format_html(
-                '<img src="{}" height="50" style="object-fit: contain;" />'.format(obj.projectimage.image.url)
-            )
-
 
 @admin.register(Project)
-class Projectdmin(AdminImagePreview, admin.ModelAdmin):
+class ProjectAdmin(AdminImagePreview, admin.ModelAdmin):
     inlines = (ProjectImagesInline,)
     list_display = (
         "name",
         "category",
     )
     exclude = ("images",)
+    list_filter = ("category",)
     # fields = (
     #     "name",
     #     "short_description",
@@ -41,8 +34,8 @@ class Projectdmin(AdminImagePreview, admin.ModelAdmin):
 
 
 @admin.register(ProjectCategory)
-class ProjectCategoryAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+class ProjectCategoryAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
+    pass
 
 
 @admin.register(ProjectImage)
