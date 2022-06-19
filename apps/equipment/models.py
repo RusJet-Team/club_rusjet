@@ -2,7 +2,7 @@ from ckeditor.fields import RichTextField
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from config.utils.image_change import crop_square_and_resize
+# from config.utils.image_change import crop_square_and_resize
 from config.utils.slugify import slugify
 
 
@@ -111,9 +111,6 @@ class EquipmentBrend(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse("equipment-brends", kwargs={"sub_slug": self.subcategory__sub_slug})
-
 
 class EquipmentItemImage(models.Model):
     image = models.ImageField(
@@ -134,10 +131,12 @@ class EquipmentItemImage(models.Model):
         image_name = (self.image.name).split("/")[-1]
         return image_name
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        img = crop_square_and_resize(self.image.path, height=400, width=400)
-        img.save(self.image.path)
+    # НЕ ЗАБУДЬ РАСКОММЕНТИРОВАТЬ!
+
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     img = crop_square_and_resize(self.image.path, height=400, width=400)
+    #     img.save(self.image.path)
 
     def clean(self):
         height = 400
