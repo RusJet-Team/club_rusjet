@@ -15,11 +15,11 @@ def add_static_pages(apps, schema_editor):
         slug="achievements",
         text="Здесь будут наши достижения.",
     )
-    HalfStaticPage.objects.get_or_create(
-        name="Выступления",
-        slug="performances",
-        text="Здесь будет описание наших выступлений.",
-    )
+    # HalfStaticPage.objects.get_or_create(
+    #     name="Выступления",
+    #     slug="performances",
+    #     text="Здесь будет описание наших выступлений.",
+    # )
 
 
 

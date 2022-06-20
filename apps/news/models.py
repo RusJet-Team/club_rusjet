@@ -72,6 +72,7 @@ class News(models.Model):
     event_bool = models.BooleanField(
         default=False,
         verbose_name="Мероприятие",
+        help_text="Отметить если необходимо указать дату проведения и место",
     )
     event_date = models.DateField(
         null=True,
