@@ -11,6 +11,22 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
         "vocation",
         "image_preview_list_page",
     )
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "first_name",
+                    "last_name",
+                    "middle_name",
+                    "vocation",
+                    "email",
+                    "image",
+                    "image_preview_change_page",
+                ),
+            },
+        ),
+    )
     readonly_fields = ("image_preview_change_page",)
 
 

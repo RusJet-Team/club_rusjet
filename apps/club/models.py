@@ -29,7 +29,7 @@ class ClubMember(models.Model):
         blank=True,
         unique=True,
         verbose_name="Электронная почта",
-        help_text="Необязательно",
+        help_text="Если указать, будет доступен для связи на сайте",
     )
 
     class Meta:

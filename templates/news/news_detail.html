@@ -35,12 +35,16 @@
             {% endif %}
           </div>
           <div class="entry-footer">
+            {% if object.event_date %}
+            <li class="d-flex align-items-center"><a><time datetime="{{ object.pub_date }}">Дата проведения: {{ object.event_date }}</time></a></li>
+            {% endif %}
             <i class="bi bi-tags"></i>
             <ul class="tags">
               {% for category in object.category.all %}
               <li><a>{{ category.name }}</a></li>
               {% endfor %}
             </ul>
+
           </div>
         </article>
       </div>

@@ -23,14 +23,23 @@ class ProjectAdmin(AdminImagePreview, admin.ModelAdmin):
     )
     exclude = ("images",)
     list_filter = ("category",)
-    # fields = (
-    #     "name",
-    #     "short_description",
-    #     "image",
-    #     "image_change_page",
-    #     "text",
-    #     "slug",
-    # )
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "name",
+                    "category",
+                    "title",
+                    "text",
+                ),
+            },
+        ),
+    )
+    search_fields = (
+        "name",
+        "title",
+    )
 
 
 @admin.register(ProjectCategory)

@@ -25,10 +25,10 @@ class ServiceItemAdmin(AdminImagePreview, admin.ModelAdmin):
     fields = (
         "name",
         "short_description",
-        "image",
-        "image_change_page",
         "text",
         "slug",
+        "image",
+        "image_change_page",
     )
     readonly_fields = ("image_change_page",)
 

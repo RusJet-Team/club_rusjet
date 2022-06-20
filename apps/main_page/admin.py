@@ -21,7 +21,22 @@ class PartnerAdmin(AdminImagePreview, admin.ModelAdmin):
         "image_preview_list_page",
     )
     readonly_fields = ("image_preview_change_page",)
-    exclude = ("slug",)
+    search_fields = ("name",)
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "name",
+                    "short_description",
+                    "text",
+                    "url",
+                    "image",
+                    "image_preview_change_page",
+                ),
+            },
+        ),
+    )
 
 
 admin.site.site_header = "Администрирование сайта клуба "

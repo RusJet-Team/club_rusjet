@@ -9,7 +9,7 @@ from apps.equipment.models import (
     EquipmentItemYoutubeVideoUrl,
     EquipmentSubCategory,
 )
-from apps.main_page.mixins import AdminImagePreview
+from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMixin
 
 
 class EquipmentItemImageInline(AdminImagePreview, admin.TabularInline):
@@ -54,6 +54,7 @@ class EquipmentSubCategoryAdmin(AdminImagePreview, admin.ModelAdmin):
         "name",
         "image_preview_list_page",
     )
+    list_filter = ("category__name",)
 
 
 @admin.register(EquipmentBrend)
@@ -62,21 +63,25 @@ class EquipmentBrendAdmin(AdminImagePreview, admin.ModelAdmin):
         "name",
         "image_preview_list_page",
     )
+    list_filter = (
+        "subcategory__category__name",
+        "subcategory__name",
+    )
 
 
 @admin.register(EquipmentItemDocument)
-class EquipmentItemDocumentAdmin(admin.ModelAdmin):
+class EquipmentItemDocumentAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
     list_display = ("id",)
 
 
 @admin.register(EquipmentItemImage)
-class EquipmentItemImageAdmin(AdminImagePreview, admin.ModelAdmin):
-    list_display = ("image_preview_list_page",)
+class EquipmentItemImageAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
+    pass
 
 
 @admin.register(EquipmentItemYoutubeVideoUrl)
-class EquipmentItemYoutubeVideoUrlAdmin(AdminImagePreview, admin.ModelAdmin):
-    list_display = ("video_url",)
+class EquipmentItemYoutubeVideoUrlAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
+    pass
 
 
 @admin.register(EquipmentItem)
@@ -86,4 +91,17 @@ class EquipmentItemAdmin(AdminImagePreview, admin.ModelAdmin):
         EquipmentItemDocumentInline,
         EquipmentItemYoutubeVideoUrlInline,
     )
-    list_display = ("name",)
+    list_display = (
+        "name",
+        "brend",
+        "subcategory",
+    )
+    list_filter = (
+        "subcategory__category__name",
+        "subcategory__name",
+    )
+    search_fields = (
+        "name",
+        "brend__name",
+        "subcategory__name",
+    )
