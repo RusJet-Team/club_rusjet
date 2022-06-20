@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}{{ performances.name }}{% endblock %}
+{% block title %}{{ achievements.name }}{% endblock %}
 
 {% block content %}
 <section>
@@ -9,11 +9,11 @@
 <section class="team">
   <div class="container">
     <div class="section-title" data-aos="fade-up">
-        <h2>{{ performances.name }}</h2>
+        <h2>{{ achievements.name }}</h2>
     </div>
   <div class="container" data-aos="fade-up">
     <p>
-      {{ performances.text|safe }}
+      {{ achievements.text|safe }}
     </p>
   </div>
 </section>
