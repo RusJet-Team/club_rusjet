@@ -12,6 +12,11 @@
       </div>
   </div>
   </section>
+  <!-- <div class="modal fade" tabindex="-1" role ="dialog" id ="modal">
+    <div class="modal-dialog" role ="document">
+      <div class="modal-content"></div>
+    </div>
+  </div> -->
 <section id="shop" class="shop section-bg">
     <div class="container" data-aos="fade-up" data-aos-duration="300">
       <div class="row">
@@ -41,6 +46,12 @@
                   <div class="shop-detail-description">
                     <h2>{{ object.name }}</h2>
                     <p>{{ object.title }}</p>
+                  </div>
+                  <div class="row">
+                    <div class="col text-center p-3">
+                      <a href="mailto:info@rusjet.ru" class="getstarted" href="#about">Запросить наличие</a>
+                      <!-- <a id="create-question" class="getstarted" href="#about">Запросить наличие</a> -->
+                    </div>
                   </div>
                 </div>
 
@@ -127,4 +138,16 @@
 
     </div>
 </section>
+
+{% endblock %}
+{% block js %}
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+
+      $("#create-question").modalForm({
+          formURL: "{% url 'create_question' %}"
+      });
+
+  });
+</script> -->
 {% endblock %}

@@ -35,6 +35,7 @@ urlpatterns = [
     path("", include("apps.news.urls")),
     path("", include("apps.projects.urls")),
     path("", include("apps.equipment.urls")),
+    path("", include("apps.questions.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

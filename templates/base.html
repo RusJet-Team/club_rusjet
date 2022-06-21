@@ -35,6 +35,11 @@
   {% include 'includes/nav.html' %}
 
   <main>
+    <div class="modal fade" tabindex="-1" role ="dialog" id ="modal">
+      <div class="modal-dialog" role ="document">
+        <div class="modal-content"></div>
+      </div>
+    </div>
     {% block content %}
 
     {% endblock %}
@@ -51,10 +56,30 @@
   <script src="{% static '/assets/vendor/purecounter/purecounter.js' %}"></script>
   <script src="{% static '/assets/vendor/aos/aos.js' %}"></script>
   <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <script src="{% static '/assets/js/jquery.min.js' %}"></script>
+  <script src="{% static '/assets/js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+
   <script src="{% static '/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static '/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static '/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static '/assets/js/main.min.js' %}"></script>
+  {% block js %}
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+          $("#create-question").modalForm({
+              formURL: "{% url 'create_question' %}"
+          });
+
+      });
+    </script>
+  {% endblock %}
+
+
+
+
+
 
 </body>
 

@@ -123,6 +123,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-bootstrap-modal-forms"
+version = "2.2.0"
+description = "A Django plugin for creating AJAX driven forms in Bootstrap modal."
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=1.8"
+
+[[package]]
 name = "django-ckeditor"
 version = "6.4.1"
 description = "Django admin CKEditor integration."
@@ -639,7 +650,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.9.12"
-content-hash = "bb37bfe135fd0cd064b8202f324cfb9b2633a673bb812256030513b9e19a810a"
+content-hash = "dc19b9273c39614bbd778a33e574f53caeaa13cd6f47f54f7a573b367de2936d"
 
 [metadata.files]
 appnope = [
@@ -685,6 +696,9 @@ distlib = [
 django = [
     {file = "Django-4.0.4-py3-none-any.whl", hash = "sha256:07c8638e7a7f548dc0acaaa7825d84b7bd42b10e8d22268b3d572946f1e9b687"},
     {file = "Django-4.0.4.tar.gz", hash = "sha256:4e8177858524417563cc0430f29ea249946d831eacb0068a1455686587df40b5"},
+]
+django-bootstrap-modal-forms = [
+    {file = "django-bootstrap-modal-forms-2.2.0.tar.gz", hash = "sha256:be180b30892aa7b8012718dfca7586de7d0c143585bc44ed507d50569cdd41cd"},
 ]
 django-ckeditor = [
     {file = "django-ckeditor-6.4.1.tar.gz", hash = "sha256:53f6489bfdfc98c2bafd312636db24db8f7964e16178a59153422200ac602de7"},
