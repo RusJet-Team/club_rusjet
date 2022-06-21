@@ -320,6 +320,21 @@ h6 {
   display: block;
 }
 
+.getstarted,
+.getstarted:focus {
+  background: #3498db;
+  padding: 7px 20px;
+  margin-left: 30px;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.getstarted:hover,
+.getstarted:focus:hover {
+  color: #fff;
+  background: #4aa3df;
+}
+
 #hero {
   width: 100%;
   height: 100vh;
@@ -347,7 +362,7 @@ h6 {
 
 #hero .carousel-item::before {
   content: "";
-  background-color: rgba(78, 119, 161, 0.227);
+  background-color: rgba(78, 119, 161, 0.415);
 }
 
 #hero .carousel-container {
@@ -721,8 +736,13 @@ section {
   position: relative;
   width: 100%;
   background-size: cover;
+  filter: grayscale(60%);
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.more-services .card:hover {
+  filter: none;
 }
 
 .more-services .card-body {
@@ -829,6 +849,7 @@ section {
 }
 
 .portfolio .portfolio-wrap img {
+  filter: grayscale(70%);
   transition: all ease-in-out 0.3s;
 }
 
@@ -966,11 +987,16 @@ section {
   width: 300px;
   background-position: center center;
   background-size: contain !important;
+  filter: grayscale(70%);
   color: rgb(130, 130, 130);
   position: relative;
   border: 1px solid #e8e8e8;
   border-radius: 15px;
   margin-bottom: 20px;
+}
+
+.shop-card:hover {
+  filter: none;
 }
 
 .shop-card-category {
@@ -1011,7 +1037,7 @@ section {
 }
 
 .shop-card-link:hover {
-  opacity: 0.2;
+  opacity: 0.1;
 }
 
 .shop-sidebar li .submenu {
@@ -1397,8 +1423,14 @@ section {
 
 .blog .entry .entry-img {
   max-height: 440px;
+  filter: grayscale(70%);
+  transition: all 0.4s ease-in-out;
   margin: -30px -30px 20px -30px;
   overflow: hidden;
+}
+
+.blog .entry .entry-img:hover {
+  filter: none;
 }
 
 .blog .entry .entry-title {
@@ -1698,6 +1730,12 @@ section {
 .blog .sidebar .recent-posts img {
   width: 80px;
   float: left;
+  filter: grayscale(50%);
+  transition: all 0.4s ease-in-out;
+}
+
+.blog .sidebar .recent-posts img:hover {
+  filter: none;
 }
 
 .blog .sidebar .recent-posts h4 {

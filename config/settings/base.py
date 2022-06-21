@@ -43,6 +43,7 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "django_cleanup.apps.CleanupConfig",
+    "bootstrap_modal_forms",
     "ckeditor",
 ]
 
@@ -53,6 +54,7 @@ LOCAL_APPS = [
     "apps.news",
     "apps.projects",
     "apps.equipment",
+    "apps.questions",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
