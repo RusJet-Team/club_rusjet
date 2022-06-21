@@ -2,7 +2,7 @@ from ckeditor.fields import RichTextField
 from django.core.exceptions import ValidationError
 from django.db import models
 
-# from config.utils.image_change import crop_square_and_resize
+from config.utils.image_change import crop_square_and_resize
 from config.utils.slugify import slugify
 
 
@@ -26,6 +26,8 @@ class EquipmentCategory(models.Model):
         if not self.category_slug:
             self.category_slug = slugify(self.name)
         super().save(*args, **kwargs)
+        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img.save(self.image.path)
 
     class Meta:
         verbose_name = "Категория оборудования"
@@ -61,6 +63,8 @@ class EquipmentSubCategory(models.Model):
         if not self.subcategory_slug:
             self.subcategory_slug = slugify(self.name)
         super().save(*args, **kwargs)
+        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img.save(self.image.path)
 
     class Meta:
         ordering = ["name"]
@@ -103,6 +107,8 @@ class EquipmentBrend(models.Model):
         if not self.brend_slug:
             self.brend_slug = slugify(self.name)
         super().save(*args, **kwargs)
+        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img.save(self.image.path)
 
     class Meta:
         verbose_name = "Бренд оборудования"
@@ -131,12 +137,10 @@ class EquipmentItemImage(models.Model):
         image_name = (self.image.name).split("/")[-1]
         return image_name
 
-    # НЕ ЗАБУДЬ РАСКОММЕНТИРОВАТЬ!
-
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-    #     img = crop_square_and_resize(self.image.path, height=400, width=400)
-    #     img.save(self.image.path)
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img.save(self.image.path)
 
     def clean(self):
         height = 400
