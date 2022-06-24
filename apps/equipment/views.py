@@ -54,7 +54,7 @@ class EquipmentBrendDetailView(MultipleObjectMixin, DetailView):
     slug_field = "brend_slug"
     slug_url_kwarg = "brend_slug"
     template_name = "equipment/equipments-brends.html"
-    paginate_by = 5
+    paginate_by = 6
 
     def get_queryset(self):
         return EquipmentBrend.objects.filter(brend_slug=self.kwargs["brend_slug"]).values("name")

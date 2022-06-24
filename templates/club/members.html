@@ -16,16 +16,13 @@
         <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
         <div class="member" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
             <div class="member-img">
-            <img src="{{ member.image.url }}" class="img-fluid" alt="">
-            {% if member.email %}
-            <div class="social">
-                <a href="mailto:{{ member.email }}"><i class="bi bi-envelope"></i></a>
-            </div>
-            {% endif %}
+                <a href="{{ member.image.url }}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox"><img src="{{ member.image.url }}" class="img-fluid" alt=""></a>
             </div>
             <div class="member-info">
             <h4>{{ member.first_name }} {{ member.last_name }}</h4>
             <span>{{ member.vocation }}</span>
+            <p>{{ member.achievements }}</p>
             </div>
         </div>
         </div>

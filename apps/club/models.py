@@ -19,17 +19,13 @@ class ClubMember(models.Model):
         max_length=50,
         verbose_name="Должность",
     )
+    achievements = models.TextField(
+        verbose_name="Достижения",
+    )
     image = models.ImageField(
         upload_to="images/club/members/",
         verbose_name="Фотография",
         help_text="Изображения только в формате jpg",
-    )
-    email = models.EmailField(
-        max_length=150,
-        blank=True,
-        unique=True,
-        verbose_name="Электронная почта",
-        help_text="Если указать, будет доступен для связи на сайте",
     )
 
     class Meta:

@@ -21,10 +21,13 @@
           <div class="swiper-wrapper align-items-center">
             {% for image in carousel_images.all %}
             <div class="swiper-slide">
-              <img src="{{ image.image.url }}" alt="">
+              <a href="{{ image.image.url }}" data-gallery="portfolioGallery"
+                class="portfolio-lightbox"><img src="{{ image.image.url }}" alt=""></a>
             </div>
             {% endfor %}
           </div>
+          <div class="swiper-button-prev" style="color: #d3d3d342"></div>
+          <div class="swiper-button-next" style="color: #d3d3d342"></div>
           <div class="swiper-pagination"></div>
         </div>
       </div>
@@ -40,4 +43,24 @@
 
   </div>
 </section>
+{% endblock %}
+{% block js %}
+<script>
+  var swiper = new Swiper('.swiper', {
+      direction: 'horizontal',
+      loop: true,
+      centeredSlides: true,
+      autoplay: true,
+      simulateTouch:true,
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+</script>
 {% endblock %}

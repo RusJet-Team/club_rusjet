@@ -33,11 +33,10 @@
           <img src="{{ project_item.projectimage_set.first.image.url }}" class="img-fluid" alt="">
           <div class="portfolio-info">
             <a href="{% url 'projects_detail' project_item.id %}"><h4>{{ project_item.name }}</h4></a>
-            <p>{{ project_item.title }}</p>
+            <a href="{% url 'projects_detail' project_item.id %}"><p>{{ project_item.title }}</p></a>
             <div class="portfolio-links">
               <a href="{{ project_item.projectimage_set.first.image.url }}" data-gallery="portfolioGallery"
                 class="portfolio-lightbox" title="{{ project_item.name }}"><i class="bx bx-move"></i></a>
-              <a href="{% url 'projects_detail' project_item.id %}" title="Подробнее"><i class="bx bx-link-external"></i></a>
             </div>
           </div>
         </div>

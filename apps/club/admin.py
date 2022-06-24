@@ -20,7 +20,7 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
                     "last_name",
                     "middle_name",
                     "vocation",
-                    "email",
+                    "achievements",
                     "image",
                     "image_preview_change_page",
                 ),
