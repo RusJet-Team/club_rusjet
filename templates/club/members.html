@@ -17,7 +17,7 @@
         <div class="member" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
             <div class="member-img">
                 <a href="{{ member.image.url }}" data-gallery="portfolioGallery"
-                class="portfolio-lightbox"><img src="{{ member.image.url }}" class="img-fluid" alt=""></a>
+                class="portfolio-lightbox" title="{{ member.first_name }} {{ member.last_name }}"><img src="{{ member.image.url }}" class="img-fluid" alt=""></a>
             </div>
             <div class="member-info">
             <h4>{{ member.first_name }} {{ member.last_name }}</h4>

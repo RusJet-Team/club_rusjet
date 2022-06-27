@@ -8,7 +8,7 @@
       {% for partner in partners %}
 
       <div class="col-lg-2 col-md-4 col-6">
-        <a href="{% url 'partners' partner.slug %}"><img src="{{ partner.image.url }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0 }}00"></a>
+        <a href="{% url 'partner' partner.slug %}"><img src="{{ partner.image.url }}" class="img-fluid" alt="" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0 }}00"></a>
       </div>
 
       {% endfor %}

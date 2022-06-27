@@ -1,7 +1,7 @@
 from PIL import Image
 
 
-def crop_square_and_resize(image_path, height: int, width: int):
+def crop_square_and_resize(image_path):
 
     img = Image.open(image_path)
     img_width, img_height = img.size
@@ -17,7 +17,4 @@ def crop_square_and_resize(image_path, height: int, width: int):
                 (img_height + crop_height) // 2,
             )
         )
-        crop_image.thumbnail((height, width))
         return crop_image
-    img.thumbnail((height, width))
-    return img
