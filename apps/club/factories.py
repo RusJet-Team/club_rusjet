@@ -19,7 +19,7 @@ class ClubMemberFactory(factory.django.DjangoModelFactory):
     last_name = factory.Faker("last_name", locale="ru_RU")
     middle_name = factory.Faker("middle_name", locale="ru_RU")
     vocation = factory.Faker("job", locale="ru_RU")
-    email = factory.Faker("email", locale="ru_RU")
+    achievements = factory.Faker("text", locale="ru_RU")
 
     @factory.post_generation
     def image(self, created, extracted, **kwargs):

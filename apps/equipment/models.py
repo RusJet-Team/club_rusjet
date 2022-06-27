@@ -26,7 +26,7 @@ class EquipmentCategory(models.Model):
         if not self.category_slug:
             self.category_slug = slugify(self.name)
         super().save(*args, **kwargs)
-        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img = crop_square_and_resize(self.image.path)
         img.save(self.image.path)
 
     class Meta:
@@ -63,7 +63,7 @@ class EquipmentSubCategory(models.Model):
         if not self.subcategory_slug:
             self.subcategory_slug = slugify(self.name)
         super().save(*args, **kwargs)
-        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img = crop_square_and_resize(self.image.path)
         img.save(self.image.path)
 
     class Meta:
@@ -107,7 +107,7 @@ class EquipmentBrend(models.Model):
         if not self.brend_slug:
             self.brend_slug = slugify(self.name)
         super().save(*args, **kwargs)
-        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img = crop_square_and_resize(self.image.path)
         img.save(self.image.path)
 
     class Meta:
@@ -139,7 +139,7 @@ class EquipmentItemImage(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        img = crop_square_and_resize(self.image.path, height=400, width=400)
+        img = crop_square_and_resize(self.image.path)
         img.save(self.image.path)
 
     def clean(self):

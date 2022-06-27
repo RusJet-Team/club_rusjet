@@ -19,17 +19,13 @@ class ClubMember(models.Model):
         max_length=50,
         verbose_name="Должность",
     )
+    achievements = models.TextField(
+        verbose_name="Достижения",
+    )
     image = models.ImageField(
         upload_to="images/club/members/",
         verbose_name="Фотография",
         help_text="Изображения только в формате jpg",
-    )
-    email = models.EmailField(
-        max_length=150,
-        blank=True,
-        unique=True,
-        verbose_name="Электронная почта",
-        help_text="Если указать, будет доступен для связи на сайте",
     )
 
     class Meta:
@@ -64,7 +60,7 @@ class HalfStaticPage(models.Model):
 class HalfStaticPageImage(models.Model):
     image = models.ImageField(
         upload_to="images/club/staticpages/",
-        verbose_name="Изображения для вставки на страницу",
+        verbose_name="Изображения для вставки в карусель",
     )
     page = models.ForeignKey(
         HalfStaticPage,
@@ -73,9 +69,28 @@ class HalfStaticPageImage(models.Model):
     )
 
     class Meta:
-        verbose_name = "Изображение статических страниц"
-        verbose_name_plural = "Изображения статических страниц"
+        verbose_name = "Изображение карусели статических страниц"
+        verbose_name_plural = "Изображения карусели статических страниц"
 
     def __str__(self):
         image_name = (self.image.name).split("/")[-1]
         return image_name
+
+
+class HalfStaticPageYoutubeVideoUrl(models.Model):
+    video_url = models.CharField(
+        max_length=150,
+        verbose_name="Ссылка на видео YouTube",
+    )
+    equipment = models.ForeignKey(
+        HalfStaticPage,
+        on_delete=models.CASCADE,
+        verbose_name="Статическая страница",
+    )
+
+    class Meta:
+        verbose_name = "Ссылка на видео YouTube"
+        verbose_name_plural = "Ссылки на видео YouTube"
+
+    def __str__(self):
+        self.video_url

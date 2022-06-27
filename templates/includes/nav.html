@@ -2,6 +2,7 @@
 
 {% load nav_services %}
 {% load equip_sidebar %}
+{% load partners %}
 
  <header id="header" class="fixed-top d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
@@ -16,10 +17,18 @@
           <ul>
             <li><a href="{% url 'history' %}">История клуба</a></li>
             <li><a href="{% url 'members' %}">Наша команда</a></li>
-            <li><a href="{% url 'achievements' %}">Достижения</a></li>
+
+            <li class="dropdown active"><a href="{% url 'index' %}#clients"><span>Наши партнёры</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                {% get_partners as partners %}
+                {% for partner in partners %}
+                <li><a href="{% url 'partner' partner.slug %}">{{ partner.name }}</a></li>
+                {% endfor %}
+              </ul>
+            </li>
           </ul>
         </li>
-        <li class="dropdown active"><a href="{% url 'index' %}#services"><span>Наши услуги</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown active"><a href="{% url 'index' %}#services"><span>Услуги</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             {% get_service_names as service_names %}
             {% for service_name in service_names %}

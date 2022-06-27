@@ -1,7 +1,6 @@
 from django.contrib import admin
-from django.utils.html import format_html
 
-from apps.club.models import ClubMember, HalfStaticPage, HalfStaticPageImage
+from apps.club.models import ClubMember, HalfStaticPage, HalfStaticPageImage, HalfStaticPageYoutubeVideoUrl
 from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMixin
 
 
@@ -20,7 +19,7 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
                     "last_name",
                     "middle_name",
                     "vocation",
-                    "email",
+                    "achievements",
                     "image",
                     "image_preview_change_page",
                 ),
@@ -32,25 +31,29 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
 
 class HalfStaticPageImageInline(AdminImagePreview, admin.TabularInline):
     model = HalfStaticPageImage
-    readonly_fields = (
-        "image_preview",
-        "image_url",
-    )
+    readonly_fields = ("image_preview",)
     verbose_name = "Изображение"
     verbose_name_plural = "Изображения"
     extra = 1
     classes = ("collapsible",)
     model.__str__ = lambda self: ""
 
-    @admin.display(description="Ссылка для вставки в редактор")
-    def image_url(self, obj):
-        if obj.image:
-            return format_html(f'<a href="{obj.image.url}">Ссылка</a>' f"<br /><a>Скопируйте и вставьте в редактор</a>")
+
+class HalfStaticPageYoutubeVideoUrlInline(admin.TabularInline):
+    model = HalfStaticPageYoutubeVideoUrl
+    verbose_name = "Youtube ссылка"
+    verbose_name_plural = "Youtube ссылки"
+    extra = 1
+    classes = ("collapsible",)
+    model.__str__ = lambda self: ""
 
 
 @admin.register(HalfStaticPage)
 class HalfStaticPageAdmin(admin.ModelAdmin):
-    inlines = (HalfStaticPageImageInline,)
+    inlines = (
+        HalfStaticPageImageInline,
+        HalfStaticPageYoutubeVideoUrlInline,
+    )
     list_display = ("name",)
     exclude = (
         "images",
