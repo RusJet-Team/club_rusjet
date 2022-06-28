@@ -1,5 +1,4 @@
 {% load static %}
-{% load webp %}
 {% load nav_services %}
 {% load equip_sidebar %}
 {% load partners %}
@@ -8,7 +7,7 @@
   <div class="container d-flex align-items-center justify-content-between">
 
     <div class="logo">
-      <a href="{% url 'index' %}"><img src="{% webp '/assets/img/logo.webp' %}" alt="image" class="img-fluid"></a>
+      <a href="{% url 'index' %}"><img src="{% static '/assets/img/logo.png' %}" alt="" class="img-fluid"></a>
     </div>
 
     <nav id="navbar" class="navbar">
