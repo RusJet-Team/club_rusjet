@@ -1,11 +1,10 @@
 {% load static %}
-{% load webp %}
 <footer id="footer">
   <div class="container">
     <div class="row d-flex align-items-center">
       <div class="col-lg-6 text-lg-left text-center">
         <div class="copyright">
-          <p class="m-0 text-dark text-center "><img src="{% webp '/assets/img/logo_footer.webp' %}" alt="" class="img-fluid" width="100" height="200"><strong>©</strong></p>
+          <p class="m-0 text-dark text-center "><img src="{% static '/assets/img/logo_footer.png' %}" alt="" class="img-fluid" width="100" height="200"><strong>©</strong></p>
           <p class="m-0 text-dark text-center "> {{ year }}. Официальный сайт.</p>
         </div>
       </div>

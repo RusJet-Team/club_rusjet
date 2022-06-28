@@ -204,19 +204,6 @@ Django = ">=2.2"
 tests = ["coverage"]
 
 [[package]]
-name = "django-webp"
-version = "2.0.0"
-description = "Returns a webp image instead of jpg, gif or png to browsers which have support"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-django = ">=3.0.6"
-httpagentparser = ">=1.9.0"
-Pillow = ">=7.1.2"
-
-[[package]]
 name = "django-webp-doubles"
 version = "0.3"
 description = "A Django app to create webp-doubles."
@@ -296,14 +283,6 @@ eventlet = ["eventlet (>=0.24.1)"]
 gevent = ["gevent (>=1.4.0)"]
 setproctitle = ["setproctitle"]
 tornado = ["tornado (>=0.2)"]
-
-[[package]]
-name = "httpagentparser"
-version = "1.9.3"
-description = "Extracts OS Browser etc information from http user agent string"
-category = "main"
-optional = false
-python-versions = "*"
 
 [[package]]
 name = "identify"
@@ -679,7 +658,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.9.12"
-content-hash = "5695eb986ce4db8a9c64725a07033b05f4c10b2665aa27c42ed07818de87d65a"
+content-hash = "44ed73a7a3a3fb2d8784f63eec7a10ffa1f2094729ddaab7c320315ad34b82ff"
 
 [metadata.files]
 appnope = [
@@ -753,10 +732,6 @@ django-js-asset = [
     {file = "django_js_asset-2.0.0-py3-none-any.whl", hash = "sha256:86f9f300d682537ddaf0487dc2ab356581b8f50c069bdba91d334a46e449f923"},
     {file = "django_js_asset-2.0.0.tar.gz", hash = "sha256:adc1ee1efa853fad42054b540c02205344bb406c9bddf87c9e5377a41b7db90f"},
 ]
-django-webp = [
-    {file = "django_webp-2.0.0-py2-none-any.whl", hash = "sha256:e9d62c86544635f095fc286fd104fa4cdf5a2dfef37bf9ec5a92ddca449e78f1"},
-    {file = "django_webp-2.0.0-py3-none-any.whl", hash = "sha256:9eaebb28502d0031b666a8704c29db4836df9b15d59cfe35848465e6fdbcfc5d"},
-]
 django-webp-doubles = [
     {file = "django-webp-doubles-0.3.tar.gz", hash = "sha256:913f92cc64a8d926e425a673743314f7b719bc1d0b6765d1db383eaa7230d330"},
 ]
@@ -783,9 +758,6 @@ flake8 = [
 gunicorn = [
     {file = "gunicorn-20.1.0-py3-none-any.whl", hash = "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e"},
     {file = "gunicorn-20.1.0.tar.gz", hash = "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"},
-]
-httpagentparser = [
-    {file = "httpagentparser-1.9.3.tar.gz", hash = "sha256:370f466cbddca498290ea03d94e523c31e0cdb6218f53574d76e93ee1f9140f4"},
 ]
 identify = [
     {file = "identify-2.4.12-py2.py3-none-any.whl", hash = "sha256:5f06b14366bd1facb88b00540a1de05b69b310cbc2654db3c7e07fa3a4339323"},
