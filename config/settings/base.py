@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = [
     "django_cleanup.apps.CleanupConfig",
     "bootstrap_modal_forms",
     "ckeditor",
+    "webp_doubles",
 ]
 
 LOCAL_APPS = [
@@ -156,4 +157,19 @@ CKEDITOR_CONFIGS = {
         'removePlugins': 'stylesheetparser',
         'extraAllowedContent': 'iframe[*]',
     },
+}
+
+MODELS_WITH_IMAGES_FOR_WEBP = {
+    'club.ClubMember': ['image',],
+    'club.HalfStaticPageImage': ['image',],
+    'equipment.EquipmentCategory': ['image',],
+    'equipment.EquipmentSubCategory': ['image',],
+    'equipment.EquipmentBrend': ['image',],
+    'equipment.EquipmentItemImage': ['image',],
+    'main_page.CarouselItem': ['image',],
+    'main_page.Partner': ['image',],
+    'news.News': ['image',],
+    'projects.ProjectImage': ['image',],
+    'services.ServiceItem': ['image',],
+    'services.ServiceCarouselImage': ['image',],
 }
