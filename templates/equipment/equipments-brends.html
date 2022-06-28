@@ -3,7 +3,7 @@
 
 {% block title %}{{ object.name }}{% endblock %}
 
-{% block breadcrumbs %}{{ object.name }}{% endblock %}
+{% block breadcrumbs %}Оборудование / {{ object.subcategory.category.name }} / {{ object.subcategory.name }} / {{ object.name }}{% endblock %}
 
 {% block shop %}
 {% for object in object_list %}
