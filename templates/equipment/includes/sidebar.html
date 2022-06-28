@@ -12,10 +12,10 @@
       {% for category in categories %}
       <li class="nav-item has-submenu">
         <a class="nav-link" href="{% url 'equipment-categories' category.category_slug %}#content">{{ category.name }}<i class="bi small bi-caret-down-fill"></i> </a>
-        <ul class="submenu active">
-          <li class="nav-item has-submenu">
+        <ul class="submenu collapse">
           {% get_subcategories category as subcategories %}
           {% for subcategory in subcategories %}
+          <li class="nav-item has-submenu">
             <a class="nav-link" href="{% url 'equipment-subcategories' category_slug=subcategory.category.category_slug subcategory_slug=subcategory.subcategory_slug %}#content">{{ subcategory.name }}<i class="bi small bi-caret-down-fill"></i> </a>
             <ul class="submenu collapse">
             {% get_brends subcategory as brends %}

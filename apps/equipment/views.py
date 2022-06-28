@@ -38,13 +38,12 @@ class EquipmentSubCategoryDetailView(DetailView):
     template_name = "equipment/equipments-subcategories.html"
 
     def get_queryset(self):
-        return EquipmentSubCategory.objects.filter(subcategory_slug=self.kwargs["subcategory_slug"]).values("name")
+        return EquipmentSubCategory.objects.filter(subcategory_slug=self.kwargs["subcategory_slug"]).all()
 
     def get_context_data(self, **kwargs):
         context = {}
         super().get_context_data()
         context["brends"] = EquipmentBrend.objects.filter(subcategory__subcategory_slug=self.kwargs["subcategory_slug"])
-        print(context)
         return super().get_context_data(**context)
 
 
@@ -57,7 +56,7 @@ class EquipmentBrendDetailView(MultipleObjectMixin, DetailView):
     paginate_by = 6
 
     def get_queryset(self):
-        return EquipmentBrend.objects.filter(brend_slug=self.kwargs["brend_slug"]).values("name")
+        return EquipmentBrend.objects.filter(brend_slug=self.kwargs["brend_slug"]).all()
 
     def get_context_data(self, **kwargs):
         object_list = EquipmentItem.objects.filter(brend__brend_slug=self.kwargs["brend_slug"])
