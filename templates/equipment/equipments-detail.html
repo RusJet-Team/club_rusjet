@@ -32,7 +32,9 @@
                     <div class="swiper-wrapper">
                       {% for image in object.equipmentitemimage_set.all %}
                       <div class="swiper-slide">
-                        <a href="{{ image.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox"><img src="{{ image.image.url }}" style="max-width: 400px; max-height: auto; object-position: center;" alt=""></a>
+                        <a href="{{ image.image.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox">
+                          <img src="{{ image.image.url }}" style="max-width: 400px; max-height: auto; object-position: center;" alt="">
+                        </a>
                       </div>
                       {% endfor %}
                     </div>

@@ -46,6 +46,7 @@ THIRD_PARTY_APPS = [
     "bootstrap_modal_forms",
     "ckeditor",
     "webp_doubles",
+    'django_webp',
 ]
 
 LOCAL_APPS = [
@@ -86,6 +87,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "config.context_processors.year",
+                'django_webp.context_processors.webp',
             ],
         },
     },
