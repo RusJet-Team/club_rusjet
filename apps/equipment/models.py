@@ -229,3 +229,15 @@ class EquipmentItem(models.Model):
                 name="unique_name_for_title_equipment",
             ),
         ]
+
+
+class LastViewedEquipmentItem(models.Model):
+    session = models.CharField(
+        max_length=200,
+        verbose_name="Ключ сессии",
+    )
+    equipment_item = models.ForeignKey(
+        EquipmentItem,
+        on_delete=models.CASCADE,
+        verbose_name="Оборудование",
+    )

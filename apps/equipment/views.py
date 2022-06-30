@@ -2,7 +2,13 @@ from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView, MultipleObjectMixin
 
-from apps.equipment.models import EquipmentBrend, EquipmentCategory, EquipmentItem, EquipmentSubCategory
+from apps.equipment.models import (
+    EquipmentBrend,
+    EquipmentCategory,
+    EquipmentItem,
+    EquipmentSubCategory,
+    LastViewedEquipmentItem,
+)
 
 
 class EquipmentCategoryListView(ListView):
@@ -68,6 +74,18 @@ class EquipmentItemDetailView(DetailView):
 
     model = EquipmentItem
     template_name = "equipment/equipments-detail.html"
+
+    def get_object(self):
+        obj = super().get_object()
+        if not self.request.session or not self.request.session.session_key:
+            self.request.session.save()
+        # print(self.request.session.session_key)
+        # print(obj)
+        LastViewedEquipmentItem.objects.get_or_create(session=self.request.session.session_key, equipment_item=obj)
+        last_viewed = LastViewedEquipmentItem.objects.filter(session=self.request.session.session_key)
+        if last_viewed.count() > 5:
+            last_viewed.first().delete()
+        return obj
 
 
 class EquipmentItemResultsView(ListView):

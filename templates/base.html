@@ -35,9 +35,32 @@
   {% include 'includes/nav.html' %}
 
   <main>
-    <div class="modal fade" tabindex="-1" role ="dialog" id ="modal">
-      <div class="modal-dialog" role ="document">
-        <div class="modal-content"></div>
+    <div class="modal fade" id="askQuestion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Форма для отправки вопроса</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label"></label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ваше имя">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput2" class="form-label"></label>
+              <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"></label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Введите Ваш вопрос" rows="10"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" style="border-radius: 30px;" data-bs-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" style="background: #3498db; border-color: #3498DB; border-radius: 30px;">Отправить</button>
+          </div>
+        </div>
       </div>
     </div>
     {% block content %}
