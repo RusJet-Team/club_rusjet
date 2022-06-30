@@ -11,12 +11,37 @@
       <h2>Оборудование / {{ object.brend.subcategory.category.name }} / {{ object.brend.subcategory.name }} / {{ object.brend.name }} {{ object.name }}</h2>
       </div>
   </div>
-  </section>
-  <!-- <div class="modal fade" tabindex="-1" role ="dialog" id ="modal">
-    <div class="modal-dialog" role ="document">
-      <div class="modal-content"></div>
+</section>
+
+<div class="modal fade" id="requestItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Запросить наличие</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"></label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Введите Ваше имя">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput2" class="form-label"></label>
+          <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label"></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Напишите что Вас интересует" rows="10"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" style="border-radius: 30px;" data-bs-dismiss="modal">Закрыть</button>
+        <button type="button" class="btn btn-primary" style="background: #3498db; border-color: #3498DB; border-radius: 30px;">Отправить</button>
+      </div>
     </div>
-  </div> -->
+  </div>
+</div>
+
 <section id="shop" class="shop section-bg">
     <div class="container" data-aos="fade-up" data-aos-duration="300">
       <div class="row">
@@ -51,7 +76,7 @@
                   </div>
                   <div class="row">
                     <div class="col text-center p-3">
-                      <a href="mailto:info@rusjet.ru" class="getstarted" href="#about">Запросить наличие</a>
+                      <a href="mailto:info@rusjet.ru" class="getstarted" data-bs-toggle="modal" data-bs-target="#requestItem" href="">Запросить наличие</a>
                       <!-- <a id="create-question" class="getstarted" href="#about">Запросить наличие</a> -->
                     </div>
                   </div>
