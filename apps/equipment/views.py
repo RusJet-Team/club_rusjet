@@ -79,8 +79,6 @@ class EquipmentItemDetailView(DetailView):
         obj = super().get_object()
         if not self.request.session or not self.request.session.session_key:
             self.request.session.save()
-        # print(self.request.session.session_key)
-        # print(obj)
         LastViewedEquipmentItem.objects.get_or_create(session=self.request.session.session_key, equipment_item=obj)
         last_viewed = LastViewedEquipmentItem.objects.filter(session=self.request.session.session_key)
         if last_viewed.count() > 5:
