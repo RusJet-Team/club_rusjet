@@ -32,12 +32,14 @@
     <h3 class="sidebar-title">Недавно просмотренные:</h3>
     {% get_last_viewed request.session.session_key as last_viewed %}
     {% for item in last_viewed %}
+    <div class="col-md-12 px-3">
     <div class="sidebar-item recent-products offset-md-1">
-      <div class="shop-item clearfix ">
+      <div class="shop-item clearfix">
         <img src="{{ item.equipment_item.equipmentitemimage_set.first.image.url }}" alt="">
         <h4><a href="{% url 'equipment-item' category_slug=item.equipment_item.brend.subcategory.category.category_slug subcategory_slug=item.equipment_item.brend.subcategory.subcategory_slug brend_slug=item.equipment_item.brend.brend_slug pk=item.equipment_item.pk %}#details">{{ item.equipment_item.name }}</a></h4>
         <p>{{ item.equipment_item.brend.name }}</p>
       </div>
+    </div>
     </div>
     {% endfor %}
   </nav>
