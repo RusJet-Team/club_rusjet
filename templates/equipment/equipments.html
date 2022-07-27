@@ -3,7 +3,7 @@
 
 {% block title %}Оборудование{% endblock %}
 
-{% block breadcrumbs %}Оборудование{% endblock %}
+{% block breadcrumbs %}<a href="{% url 'equipments' %}#content">Оборудование</a>{% endblock %}
 
 {% block shop %}
 {% for category in object_list %}

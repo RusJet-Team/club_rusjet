@@ -154,7 +154,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Full',
         'height': 300,
         'width': '100%',
-        'removePlugins': 'stylesheetparser',
+        'removePlugins': 'exportpdf',
         'extraAllowedContent': 'iframe[*]',
     },
 }

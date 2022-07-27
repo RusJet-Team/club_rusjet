@@ -8,7 +8,7 @@
 <section id="breadcrumbs" class="breadcrumbs">
   <div class="container">
       <div class="d-flex justify-content-between align-items-center">
-      <h2>Оборудование / {{ object.brend.subcategory.category.name }} / {{ object.brend.subcategory.name }} / {{ object.brend.name }} {{ object.name }}</h2>
+        <h2><a href="{% url 'equipments' %}">Оборудование > </a><a href="{% url 'equipment-categories' category_slug=object.brend.subcategory.category.category_slug %}">{{ object.brend.subcategory.category.name }} > </a><a href="{% url 'equipment-subcategories' category_slug=object.brend.subcategory.category.category_slug subcategory_slug=object.brend.subcategory.subcategory_slug %}">{{object.brend.subcategory.name }} > </a><a href="{% url 'equipment-brends' category_slug=object.brend.subcategory.category.category_slug subcategory_slug=object.brend.subcategory.subcategory_slug brend_slug=object.brend.brend_slug %}">{{object.brend.name }} </a><a href="{% url 'equipment-item' category_slug=object.brend.subcategory.category.category_slug subcategory_slug=object.brend.subcategory.subcategory_slug brend_slug=object.brend.brend_slug pk=object.pk %}#details">{{ object.name }}</a></h2>
       </div>
   </div>
 </section>

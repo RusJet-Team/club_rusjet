@@ -3,7 +3,8 @@
 
 {% block title %}{{ object.name }}{% endblock %}
 
-{% block breadcrumbs %}Оборудование / {{ object.subcategory.category.name }} / {{ object.subcategory.name }} / {{ object.name }}{% endblock %}
+{% block breadcrumbs %}<a href="{% url 'equipments' %}">Оборудование > </a><a href="{% url 'equipment-categories' category_slug=object.subcategory.category.category_slug %}">{{ object.subcategory.category.name }} > </a><a href="{% url 'equipment-subcategories' category_slug=object.subcategory.category.category_slug subcategory_slug=object.subcategory.subcategory_slug %}#content">{{object.subcategory.name }} > </a><a href="{% url 'equipment-brends' category_slug=object.subcategory.category.category_slug subcategory_slug=object.subcategory.subcategory_slug brend_slug=object.brend_slug %}">{{object.name }} </a>{% endblock %}
+
 
 {% block shop %}
 {% for object in object_list %}
