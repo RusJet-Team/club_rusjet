@@ -3,7 +3,8 @@
 
 {% block title %}{{ object.name }}{% endblock %}
 
-{% block breadcrumbs %}Оборудование / {{ object.category.name }} / {{ object.name }}{% endblock %}
+{% block breadcrumbs %}<a href="{% url 'equipments' %}">Оборудование > </a><a href="{% url 'equipment-categories' category_slug=object.category.category_slug %}">{{object.category.name }} > </a><a href="{% url 'equipment-subcategories' category_slug=object.category.category_slug subcategory_slug=object.subcategory_slug %}#content">{{object.name }} </a>{% endblock %}
+
 
 {% block shop %}
 {% for brend in brends %}

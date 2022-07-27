@@ -28,6 +28,7 @@ class EquipmentCategoryDetailView(DetailView):
         return EquipmentCategory.objects.filter(category_slug=self.kwargs["category_slug"]).values("name")
 
     def get_context_data(self, **kwargs):
+        self.object["category_slug"] = self.kwargs["category_slug"]
         context = {}
         super().get_context_data()
         context["subcategories"] = EquipmentSubCategory.objects.filter(
