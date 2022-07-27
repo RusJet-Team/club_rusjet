@@ -20,6 +20,7 @@ class EquipmentCategory(models.Model):
     image = models.ImageField(
         upload_to="images/equipment-category",
         verbose_name="Изображение категории",
+        help_text="Для лучшего отображения должно быть равное соотношение сторон",
     )
 
     def save(self, *args, **kwargs):
@@ -57,6 +58,7 @@ class EquipmentSubCategory(models.Model):
     image = models.ImageField(
         upload_to="images/equipment-category/subcategory",
         verbose_name="Изображение подкатегории",
+        help_text="Для лучшего отображения должно быть равное соотношение сторон",
     )
 
     def save(self, *args, **kwargs):
@@ -101,6 +103,7 @@ class EquipmentBrend(models.Model):
     image = models.ImageField(
         upload_to="images/equipment-category/brend",
         verbose_name="Изображение бренда",
+        help_text="Для лучшего отображения должно быть равное соотношение сторон",
     )
 
     def save(self, *args, **kwargs):
@@ -122,6 +125,7 @@ class EquipmentItemImage(models.Model):
     image = models.ImageField(
         upload_to="images/equipment-category/items/images",
         verbose_name="Изображения в карусели единицы оборудования",
+        help_text="Для лучшего отображения должно быть равное соотношение сторон",
     )
     equipment = models.ForeignKey(
         "EquipmentItem",
