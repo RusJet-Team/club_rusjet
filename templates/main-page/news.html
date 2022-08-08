@@ -2,9 +2,11 @@
 <section id="more-services" class="more-services">
   <div class="container">
 
+    {% if news %}
     <div class="section-title" data-aos="fade-up">
       <h2>Последние новости</h2>
     </div>
+    {% endif %}
 
     <div class="row">
       {% for news_item in news %}
