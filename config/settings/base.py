@@ -44,8 +44,10 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "django_cleanup.apps.CleanupConfig",
     "bootstrap_modal_forms",
+    "widget_tweaks",
     "ckeditor",
     "webp_doubles",
+    "phonenumber_field",
 ]
 
 LOCAL_APPS = [

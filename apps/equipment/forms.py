@@ -1,9 +1,9 @@
 from bootstrap_modal_forms.forms import BSModalModelForm
 
-from apps.questions.models import Question
+from apps.equipment.models import EquipmentRequest
 
 
-class QuestionModelForm(BSModalModelForm):
+class EquipmentRequestModelForm(BSModalModelForm):
     class Meta:
-        model = Question
+        model = EquipmentRequest
         fields = ["name", "email", "phone_number", "text"]

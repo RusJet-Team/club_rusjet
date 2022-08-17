@@ -7,6 +7,7 @@ from apps.equipment.models import (
     EquipmentItemDocument,
     EquipmentItemImage,
     EquipmentItemYoutubeVideoUrl,
+    EquipmentRequest,
     EquipmentSubCategory,
 )
 from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMixin
@@ -105,3 +106,12 @@ class EquipmentItemAdmin(AdminImagePreview, admin.ModelAdmin):
         "brend__name",
         "subcategory__name",
     )
+
+
+@admin.register(EquipmentRequest)
+class EquipmentRequestAdmin(admin.ModelAdmin):
+    list_display = ("name", "email")
+
+    def has_add_permission(self, request, obj=None):
+        """Remove the save and add new button."""
+        return False

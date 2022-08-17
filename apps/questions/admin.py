@@ -1,3 +1,12 @@
-# from django.contrib import admin
+from django.contrib import admin
 
-# Register your models here.
+from apps.questions.models import Question
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ("name", "email")
+
+    def has_add_permission(self, request, obj=None):
+        """Remove the save and add new button."""
+        return False
