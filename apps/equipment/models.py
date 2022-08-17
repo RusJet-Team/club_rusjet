@@ -1,6 +1,8 @@
 from ckeditor.fields import RichTextField
 from django.core.exceptions import ValidationError
+from django.core.validators import MinLengthValidator
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 # from config.utils.image_change import crop_square_and_resize
 from config.utils.slugify import slugify
@@ -245,3 +247,29 @@ class LastViewedEquipmentItem(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Оборудование",
     )
+
+
+class EquipmentRequest(models.Model):
+    name = models.CharField(
+        max_length=100,
+        verbose_name="Ваше имя",
+        help_text="Пожалуйста, представьтесь",
+    )
+    email = models.EmailField(
+        max_length=150,
+        verbose_name="Email",
+        help_text="Укажите, чтобы связаться с Вами",
+    )
+    phone_number = PhoneNumberField(verbose_name="Телефон", blank=True, help_text="Необязательно")
+    text = models.TextField(
+        verbose_name="Ваш запрос",
+        validators=[MinLengthValidator(10)],
+        help_text="Укажите количество, так же можно указать необходимую периферию и комплектующие",
+    )
+
+    class Meta:
+        verbose_name = "Запрос"
+        verbose_name_plural = "Запросы оборудования"
+
+    def __str__(self):
+        return self.name

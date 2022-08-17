@@ -6,7 +6,9 @@ from apps.equipment.views import (
     EquipmentCategoryListView,
     EquipmentItemDetailView,
     EquipmentItemResultsView,
+    EquipmentRequestCreateView,
     EquipmentSubCategoryDetailView,
+    success_equipment_request,
 )
 
 equipments_urls = [
@@ -40,4 +42,6 @@ equipments_urls = [
 
 urlpatterns = [
     path("equipment/", include(equipments_urls)),
+    path("create_request/", EquipmentRequestCreateView.as_view(), name="create_request"),
+    path("success-request/", success_equipment_request, name="success-request"),
 ]

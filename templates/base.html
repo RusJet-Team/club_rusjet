@@ -60,16 +60,51 @@
   <script src="{% static '/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static '/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static '/assets/js/main.min.js' %}"></script>
-  {% block extrascripts %}
-    <script type="text/javascript">
-      $(document).ready(function() {
+  <script type="text/javascript">
+    $(document).ready(function() {
+        var asyncSuccessMessageCreate = [
+          "<div ",
+          "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
+          "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
+          "Вопрос отправлен.",
+          "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Закрыть'></button>",
+          "</button>",
+          "</div>",
+          "<script>",
+          "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
+          "<\/script>"
+        ].join("");
 
+        function createBookAsyncModalForm() {
           $("#create-question").modalForm({
-              formURL: "{% url 'create_question' %}"
+              formURL: "{% url 'create_question' %}",
+              // modalID: "#create-modal",
+              asyncUpdate: true,
+              asyncSettings: {
+                closeOnSubmit: true,
+                successMessage: asyncSuccessMessageCreate,
+                dataUrl: "{% url 'success-question' %}",
+                dataElementId: "nonsense",
+                dataKey: "nonsense",
+                addModalFormFunction: reinstantiateModalForms
+              }
           });
+        }
+        createBookAsyncModalForm();
 
-      });
-    </script>
+        function reinstantiateModalForms() {
+          createBookAsyncModalForm();
+        }
+
+        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+            $(".alert").slideUp(500);
+        });
+
+
+    });
+  </script>
+  {% block extrascripts %}
+
   {% endblock %}
 
 

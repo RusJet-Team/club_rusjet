@@ -13,34 +13,7 @@
   </div>
 </section>
 
-<div class="modal fade" id="requestItem" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Запросить наличие</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label"></label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Введите Ваше имя">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput2" class="form-label"></label>
-          <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label"></label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Напишите что Вас интересует" rows="10"></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" style="border-radius: 30px;" data-bs-dismiss="modal">Закрыть</button>
-        <button type="button" class="btn btn-primary" style="background: #3498db; border-color: #3498DB; border-radius: 30px;">Отправить</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <section id="shop" class="shop section-bg">
     <div class="container" data-aos="fade-up" data-aos-duration="300">
@@ -76,7 +49,9 @@
                   </div>
                   <div class="row">
                     <div class="col text-center p-3">
-                      <a href="mailto:info@rusjet.ru" class="getstarted" data-bs-toggle="modal" data-bs-target="#requestItem" href="">Запросить наличие</a>
+                      <!-- <a href="mailto:info@rusjet.ru" class="getstarted" data-bs-toggle="modal" data-bs-target="#requestItem" href="">Запросить наличие</a> -->
+                      <!-- <a id="create-request" class="getstarted scrollto" type="button" name="button">Задать вопрос</a> -->
+                      <a class="getstarted scrollto" data-bs-toggle="modal" data-bs-target="#create-request">Запросить наличие</a>
                       <!-- <a id="create-question" class="getstarted" href="#about">Запросить наличие</a> -->
                     </div>
                   </div>
@@ -168,7 +143,7 @@
 
 {% endblock %}
 {% block extrascripts %}
-<script>
+<!-- <script>
   var swiper = new Swiper('.swiper', {
       direction: 'horizontal',
       loop: true,
@@ -185,14 +160,46 @@
         prevEl: '.swiper-button-prev',
       },
     });
-</script>
-<!-- <script type="text/javascript">
-  $(document).ready(function() {
-
-      $("#create-question").modalForm({
-          formURL: "{% url 'create_question' %}"
-      });
-
-  });
 </script> -->
+<script type="text/javascript">
+  $(document).ready(function() {
+      var asyncRequestSuccessMessageCreate = [
+        "<div ",
+        "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
+        "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
+        "Запрос отправлен.",
+        "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Закрыть'></button>",
+        "</button>",
+        "</div>",
+        "<script>",
+        "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
+        "<\/script>"
+      ].join("");
+
+      function createRequestAsyncModalForm() {
+        $("#create-request").modalForm({
+            formURL: "{% url 'create_request' %}",
+            // modalID: "#create-modal",
+            asyncUpdate: true,
+            asyncSettings: {
+              closeOnSubmit: true,
+              successMessage: asyncRequestSuccessMessageCreate,
+              dataUrl: "{% url 'success-request' %}",
+              dataElementId: "nonsense",
+              dataKey: "nonsense",
+              addModalFormFunction: reinstantiateModalFormsRequest
+            }
+        });
+      }
+      createRequestAsyncModalForm();
+
+      function reinstantiateModalFormsRequest() {
+        createRequestAsyncModalForm();
+      }
+
+      $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+          $(".alert").slideUp(500);
+      });
+  });
+</script>
 {% endblock %}

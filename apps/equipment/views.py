@@ -1,7 +1,11 @@
+from bootstrap_modal_forms.generic import BSModalCreateView
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
+from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView, MultipleObjectMixin
 
+from apps.equipment.forms import EquipmentRequestModelForm
 from apps.equipment.models import (
     EquipmentBrend,
     EquipmentCategory,
@@ -101,3 +105,15 @@ class EquipmentItemResultsView(ListView):
             .order_by("-rank")
         )
         return object_list
+
+
+class EquipmentRequestCreateView(BSModalCreateView):
+    template_name = "equipment/create_request.html"
+    form_class = EquipmentRequestModelForm
+    success_message = "Success: Request was created."
+    success_url = reverse_lazy("index")
+
+
+def success_equipment_request(request):
+    if request.method == "GET":
+        return HttpResponse(200)
