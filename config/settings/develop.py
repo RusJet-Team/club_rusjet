@@ -1,6 +1,10 @@
 import os  # noqa
 
+import environ
+
 from .base import *  # noqa
+
+environ.Env.read_env(ROOT_DIR / ".env")
 
 # GENERAL
 # ------------------------------------------------------------------------------
@@ -50,3 +54,12 @@ DATABASES = {
         "PORT": env("POSTGRES_PORT", default="5432"),
     }
 }
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = env("SERVER_EMAIL")
+EMAIL_HOST_PASSWORD = env("SERVER_EMAIL_PASSWORD")
+DEFAULT_FROM_EMAIL = env("SERVER_EMAIL")
+EMAIL_USE_TLS = True
