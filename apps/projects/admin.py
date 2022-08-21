@@ -43,8 +43,8 @@ class ProjectAdmin(AdminImagePreview, admin.ModelAdmin):
 
 
 @admin.register(ProjectCategory)
-class ProjectCategoryAdmin(HideOnNavPanelAdminModelMixin, admin.ModelAdmin):
-    pass
+class ProjectCategoryAdmin(admin.ModelAdmin):
+    list_display = ("name",)
 
 
 @admin.register(ProjectImage)
