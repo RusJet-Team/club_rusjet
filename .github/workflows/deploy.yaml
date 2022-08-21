@@ -86,9 +86,6 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             cd ${{ env.DEPLOY_PATH }}/deploy_infra
-            # GitHub variables
-            echo "IMAGE_BACK=${{ secrets.IMAGE_BACK }}" > .github_vars
-            echo "IMAGE_BACK_TAG=${{ secrets.IMAGE_BACK_TAG }}" >> .github_vars
             # PostgreSQL environment variables
             echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} > .env
             echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
