@@ -118,6 +118,7 @@ jobs:
             # После установки удаляем файлы
             rm deploy.service
             # cron задачи
+            sleep 10
             docker exec backend_club ./manage.py crontab add
   send_message:
     name: Send message in telegram

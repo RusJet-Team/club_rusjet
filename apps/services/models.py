@@ -16,7 +16,7 @@ class ServiceItem(models.Model):
     image = models.ImageField(
         upload_to="images/services/",
         verbose_name="Значок на главной странице",
-        help_text="Изображения только в формате png 120*120",
+        help_text="Изображения только в формате png 100*100",
     )
     slug = models.SlugField(
         unique=True,
