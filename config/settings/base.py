@@ -49,6 +49,7 @@ THIRD_PARTY_APPS = [
     "webp_doubles",
     "phonenumber_field",
     "django_crontab",
+    "adminsortable2",
 ]
 
 LOCAL_APPS = [

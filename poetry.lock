@@ -123,6 +123,17 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-admin-sortable2"
+version = "2.1.2"
+description = "Generic drag-and-drop sorting for the List, the Stacked- and the Tabular-Inlines Views in the Django Admin"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+Django = ">=4.0"
+
+[[package]]
 name = "django-bootstrap-modal-forms"
 version = "2.2.0"
 description = "A Django plugin for creating AJAX driven forms in Bootstrap modal."
@@ -709,7 +720,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.9.12"
-content-hash = "07faf2ae8c8d774d3a76d19344e3a58df7aec1e259eb0f22f693037e5bebfe4b"
+content-hash = "a1e1c0224f2a44e04125fe229e1c3ecdc37a877cabc021a87abca6d887a857da"
 
 [metadata.files]
 appnope = [
@@ -756,6 +767,7 @@ django = [
     {file = "Django-4.0.4-py3-none-any.whl", hash = "sha256:07c8638e7a7f548dc0acaaa7825d84b7bd42b10e8d22268b3d572946f1e9b687"},
     {file = "Django-4.0.4.tar.gz", hash = "sha256:4e8177858524417563cc0430f29ea249946d831eacb0068a1455686587df40b5"},
 ]
+django-admin-sortable2 = []
 django-bootstrap-modal-forms = [
     {file = "django-bootstrap-modal-forms-2.2.0.tar.gz", hash = "sha256:be180b30892aa7b8012718dfca7586de7d0c143585bc44ed507d50569cdd41cd"},
 ]

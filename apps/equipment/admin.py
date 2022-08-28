@@ -100,6 +100,7 @@ class EquipmentItemAdmin(AdminImagePreview, admin.ModelAdmin):
     list_filter = (
         "subcategory__category__name",
         "subcategory__name",
+        "brend",
     )
     search_fields = (
         "name",
