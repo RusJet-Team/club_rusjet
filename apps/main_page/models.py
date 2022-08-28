@@ -77,10 +77,17 @@ class Partner(models.Model):
         verbose_name="Url партнёра на сайте",
         help_text="Если оставить пустым, заполнится транслитом название партнёра",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Партнёр"
         verbose_name_plural = "Партнёры"
+        ordering = ["my_order"]
 
     def __str__(self):
         return self.name

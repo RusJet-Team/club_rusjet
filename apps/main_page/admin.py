@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 from django.contrib.auth.models import Group
 
@@ -18,10 +19,11 @@ class CarouselItemAdmin(AdminImagePreview, admin.ModelAdmin):
 
 
 @admin.register(Partner)
-class PartnerAdmin(AdminImagePreview, admin.ModelAdmin):
+class PartnerAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
     list_display = (
         "name",
         "image_preview_list_page",
+        "my_order",
     )
     readonly_fields = ("image_preview_change_page",)
     search_fields = ("name",)
@@ -34,6 +36,7 @@ class PartnerAdmin(AdminImagePreview, admin.ModelAdmin):
                     "short_description",
                     "text",
                     "url",
+                    "slug",
                     "image",
                     "image_preview_change_page",
                 ),
