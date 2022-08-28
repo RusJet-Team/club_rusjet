@@ -1,4 +1,4 @@
-from adminsortable2.admin import SortableAdminBase, SortableTabularInline
+from adminsortable2.admin import SortableAdminMixin, SortableTabularInline
 from django.contrib import admin
 
 from apps.equipment.models import (
@@ -87,7 +87,7 @@ class EquipmentItemYoutubeVideoUrlAdmin(HideOnNavPanelAdminModelMixin, admin.Mod
 
 
 @admin.register(EquipmentItem)
-class EquipmentItemAdmin(AdminImagePreview, SortableAdminBase, admin.ModelAdmin):
+class EquipmentItemAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
     inlines = (
         EquipmentItemImageInline,
         EquipmentItemDocumentInline,
@@ -108,11 +108,6 @@ class EquipmentItemAdmin(AdminImagePreview, SortableAdminBase, admin.ModelAdmin)
         "name",
         "brend__name",
         "subcategory__name",
-    )
-    fields = (
-        "name",
-        "brend",
-        "my_order",
     )
 
 
