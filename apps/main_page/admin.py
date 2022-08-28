@@ -35,6 +35,7 @@ class PartnerAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
                     "name",
                     "short_description",
                     "text",
+                    "my_order",
                     "url",
                     "slug",
                     "image",
