@@ -32,10 +32,17 @@ class CarouselItem(models.Model):
         verbose_name="Картинка слайда",
         help_text="Изображения только в формате jpg",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Слайд на главной странице"
         verbose_name_plural = "Слайды на главной странице"
+        ordering = ["my_order"]
 
     def __str__(self):
         return self.name

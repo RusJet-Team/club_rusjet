@@ -27,10 +27,17 @@ class ServiceItem(models.Model):
     text = RichTextField(
         verbose_name="Подробное описание",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Услуга"
         verbose_name_plural = "Услуги"
+        ordering = ["my_order"]
 
     def __str__(self):
         return self.name
@@ -51,10 +58,17 @@ class ServiceCarouselImage(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Услуга",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Изображение услуги"
         verbose_name_plural = "Изображения услуги"
+        ordering = ["my_order"]
 
     def __str__(self):
         image_name = (self.image.name).split("/")[-1]

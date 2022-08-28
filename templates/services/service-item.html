@@ -16,6 +16,7 @@
 
   <div class="container">
     <div class="row justify-content-center">
+      {% if carousel_images %}
       <div class="col-md-6">
         <div class="portfolio-details-slider swiper">
           <div class="swiper-wrapper align-items-center">
@@ -30,6 +31,7 @@
           <div class="swiper-button-next" style="color: #d3d3d342"></div>
           <div class="swiper-pagination"></div>
         </div>
+        {% endif %}
       </div>
 
       <div class="col-md-8">
