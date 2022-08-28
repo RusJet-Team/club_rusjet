@@ -134,10 +134,17 @@ class EquipmentItemImage(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Оборудование",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Изображение единицы оборудования"
         verbose_name_plural = "Изображения единицы оборудования"
+        ordering = ["my_order"]
 
     def __str__(self):
         image_name = (self.image.name).split("/")[-1]
@@ -165,10 +172,17 @@ class EquipmentItemDocument(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Оборудование",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Документ единицы оборудования"
         verbose_name_plural = "Документы единицы оборудования"
+        ordering = ["my_order"]
 
     def __str__(self):
         document_name = (self.document.name).split("/")[-1]
@@ -188,10 +202,17 @@ class EquipmentItemYoutubeVideoUrl(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Оборудование",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Ссылка на видео YouTube"
         verbose_name_plural = "Ссылки на видео YouTube"
+        ordering = ["my_order"]
 
     def __str__(self):
         self.video_url
@@ -219,14 +240,18 @@ class EquipmentItem(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Бренд",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = [
-            "name",
-        ]
+        ordering = ["my_order"]
         verbose_name = "Оборудование"
         verbose_name_plural = "Оборудование"
         constraints = [

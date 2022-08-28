@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminBase, SortableAdminMixin, SortableTabularInline
 from django.contrib import admin
 
 from apps.club.models import ClubMember, HalfStaticPage, HalfStaticPageImage, HalfStaticPageYoutubeVideoUrl
@@ -5,8 +6,9 @@ from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMix
 
 
 @admin.register(ClubMember)
-class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
+class ClubMemberAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
     list_display = (
+        "my_order",
         "vocation",
         "image_preview_list_page",
     )
@@ -19,8 +21,7 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
                     "last_name",
                     "middle_name",
                     "vocation",
-                    "achievements",
-                    "image",
+                    "achievements" "image",
                     "image_preview_change_page",
                 ),
             },
@@ -29,7 +30,7 @@ class ClubMemberAdmin(AdminImagePreview, admin.ModelAdmin):
     readonly_fields = ("image_preview_change_page",)
 
 
-class HalfStaticPageImageInline(AdminImagePreview, admin.TabularInline):
+class HalfStaticPageImageInline(AdminImagePreview, SortableTabularInline):
     model = HalfStaticPageImage
     readonly_fields = ("image_preview",)
     verbose_name = "Изображение"
@@ -39,7 +40,7 @@ class HalfStaticPageImageInline(AdminImagePreview, admin.TabularInline):
     model.__str__ = lambda self: ""
 
 
-class HalfStaticPageYoutubeVideoUrlInline(admin.TabularInline):
+class HalfStaticPageYoutubeVideoUrlInline(SortableTabularInline):
     model = HalfStaticPageYoutubeVideoUrl
     verbose_name = "Youtube ссылка"
     verbose_name_plural = "Youtube ссылки"
@@ -49,7 +50,7 @@ class HalfStaticPageYoutubeVideoUrlInline(admin.TabularInline):
 
 
 @admin.register(HalfStaticPage)
-class HalfStaticPageAdmin(admin.ModelAdmin):
+class HalfStaticPageAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = (
         HalfStaticPageImageInline,
         HalfStaticPageYoutubeVideoUrlInline,
