@@ -10,10 +10,27 @@ admin.AdminSite.get_app_list = get_app_list
 
 
 @admin.register(CarouselItem)
-class CarouselItemAdmin(AdminImagePreview, admin.ModelAdmin):
+class CarouselItemAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
     list_display = (
+        "my_order",
         "name",
         "image_preview_list_page",
+    )
+    fieldsets = (
+        (
+            None,
+            {
+                "fields": (
+                    "name",
+                    "title",
+                    "text",
+                    "button_text",
+                    "button_url",
+                    "image",
+                    "my_order",
+                ),
+            },
+        ),
     )
     readonly_fields = ("image_preview_change_page",)
 
@@ -21,9 +38,9 @@ class CarouselItemAdmin(AdminImagePreview, admin.ModelAdmin):
 @admin.register(Partner)
 class PartnerAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
     list_display = (
+        "my_order",
         "name",
         "image_preview_list_page",
-        "my_order",
     )
     readonly_fields = ("image_preview_change_page",)
     search_fields = ("name",)

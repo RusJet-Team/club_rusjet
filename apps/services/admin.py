@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminBase, SortableTabularInline
 from django.contrib import admin
 from django.utils.html import format_html
 
@@ -5,7 +6,7 @@ from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMix
 from apps.services.models import ServiceCarouselImage, ServiceItem
 
 
-class ServiceCarouselImagesInline(AdminImagePreview, admin.TabularInline):
+class ServiceCarouselImagesInline(AdminImagePreview, SortableTabularInline):
     model = ServiceCarouselImage
     readonly_fields = ("image_preview",)
     verbose_name = "Изображение"
@@ -16,9 +17,10 @@ class ServiceCarouselImagesInline(AdminImagePreview, admin.TabularInline):
 
 
 @admin.register(ServiceItem)
-class ServiceItemAdmin(AdminImagePreview, admin.ModelAdmin):
+class ServiceItemAdmin(AdminImagePreview, SortableAdminBase, admin.ModelAdmin):
     inlines = (ServiceCarouselImagesInline,)
     list_display = (
+        "my_order",
         "name",
         "image_preview_list_page",
     )
@@ -28,6 +30,7 @@ class ServiceItemAdmin(AdminImagePreview, admin.ModelAdmin):
         "text",
         "slug",
         "image",
+        "my_order",
         "image_change_page",
     )
     readonly_fields = ("image_change_page",)
