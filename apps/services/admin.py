@@ -1,4 +1,4 @@
-from adminsortable2.admin import SortableAdminBase, SortableTabularInline
+from adminsortable2.admin import SortableAdminMixin, SortableTabularInline
 from django.contrib import admin
 from django.utils.html import format_html
 
@@ -17,7 +17,7 @@ class ServiceCarouselImagesInline(AdminImagePreview, SortableTabularInline):
 
 
 @admin.register(ServiceItem)
-class ServiceItemAdmin(AdminImagePreview, SortableAdminBase, admin.ModelAdmin):
+class ServiceItemAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
     inlines = (ServiceCarouselImagesInline,)
     list_display = (
         "my_order",
@@ -30,7 +30,6 @@ class ServiceItemAdmin(AdminImagePreview, SortableAdminBase, admin.ModelAdmin):
         "text",
         "slug",
         "image",
-        "my_order",
         "image_change_page",
     )
     readonly_fields = ("image_change_page",)

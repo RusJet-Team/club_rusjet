@@ -7,10 +7,12 @@
         </form>
     </div>
     {% get_upcoming_events %}
+    {% get_categories as categories %}
+    {% if categories %}
     <h3 class="sidebar-title">Категории</h3>
+    {% endif %}
     <div class="sidebar-item categories">
         <ul>
-        {% get_categories as categories %}
         {% for category in categories %}
         <li><a href="{% url 'news_category' category.slug %}">{{ category.name }} <span>({{ category.news.count }})</span></a></li>
         {% endfor %}

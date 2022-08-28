@@ -27,10 +27,17 @@ class ClubMember(models.Model):
         verbose_name="Фотография",
         help_text="Изображения только в формате jpg",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Член клуба"
         verbose_name_plural = "Члены клуба"
+        ordering = ["my_order"]
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
@@ -67,10 +74,17 @@ class HalfStaticPageImage(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Статическая страница",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Изображение карусели статических страниц"
         verbose_name_plural = "Изображения карусели статических страниц"
+        ordering = ["my_order"]
 
     def __str__(self):
         image_name = (self.image.name).split("/")[-1]
@@ -87,10 +101,17 @@ class HalfStaticPageYoutubeVideoUrl(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Статическая страница",
     )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
 
     class Meta:
         verbose_name = "Ссылка на видео YouTube"
         verbose_name_plural = "Ссылки на видео YouTube"
+        ordering = ["my_order"]
 
     def __str__(self):
         self.video_url

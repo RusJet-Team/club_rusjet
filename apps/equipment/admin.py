@@ -1,3 +1,4 @@
+from adminsortable2.admin import SortableAdminBase, SortableTabularInline
 from django.contrib import admin
 
 from apps.equipment.models import (
@@ -13,7 +14,7 @@ from apps.equipment.models import (
 from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMixin
 
 
-class EquipmentItemImageInline(AdminImagePreview, admin.TabularInline):
+class EquipmentItemImageInline(AdminImagePreview, SortableTabularInline):
     model = EquipmentItemImage
     readonly_fields = ("image_preview",)
     verbose_name = "Изображение оборудования"
@@ -23,7 +24,7 @@ class EquipmentItemImageInline(AdminImagePreview, admin.TabularInline):
     model.__str__ = lambda self: ""
 
 
-class EquipmentItemDocumentInline(AdminImagePreview, admin.TabularInline):
+class EquipmentItemDocumentInline(AdminImagePreview, SortableTabularInline):
     model = EquipmentItemDocument
     verbose_name = "Документ"
     verbose_name_plural = "Документы"
@@ -32,7 +33,7 @@ class EquipmentItemDocumentInline(AdminImagePreview, admin.TabularInline):
     model.__str__ = lambda self: ""
 
 
-class EquipmentItemYoutubeVideoUrlInline(AdminImagePreview, admin.TabularInline):
+class EquipmentItemYoutubeVideoUrlInline(AdminImagePreview, SortableTabularInline):
     model = EquipmentItemYoutubeVideoUrl
     verbose_name = "Youtube ссылка"
     verbose_name_plural = "Youtube ссылки"
@@ -86,13 +87,14 @@ class EquipmentItemYoutubeVideoUrlAdmin(HideOnNavPanelAdminModelMixin, admin.Mod
 
 
 @admin.register(EquipmentItem)
-class EquipmentItemAdmin(AdminImagePreview, admin.ModelAdmin):
+class EquipmentItemAdmin(AdminImagePreview, SortableAdminBase, admin.ModelAdmin):
     inlines = (
         EquipmentItemImageInline,
         EquipmentItemDocumentInline,
         EquipmentItemYoutubeVideoUrlInline,
     )
     list_display = (
+        "my_order",
         "name",
         "brend",
         "subcategory",
@@ -106,6 +108,11 @@ class EquipmentItemAdmin(AdminImagePreview, admin.ModelAdmin):
         "name",
         "brend__name",
         "subcategory__name",
+    )
+    fields = (
+        "name",
+        "brend",
+        "my_order",
     )
 
 
