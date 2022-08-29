@@ -80,11 +80,11 @@ class News(models.Model):
         verbose_name="Дата мероприятия",
     )
 
-    def save(self, *args, **kwargs):
-        if self.event_bool:
-            category, _ = NewsCategory.objects.get_or_create(name="Мероприятия")
-            self.category.add(category.id)
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.event_bool:
+    #         category, _ = NewsCategory.objects.get_or_create(name="Мероприятия")
+    #         self.category.add(category)
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
