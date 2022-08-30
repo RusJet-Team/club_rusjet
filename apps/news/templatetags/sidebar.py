@@ -15,6 +15,5 @@ def get_categories():
 @register.inclusion_tag("news/includes/upcoming_events.html")
 def get_upcoming_events():
     time_now = now().date()
-    print(time_now)
     news = News.objects.filter(category__name="Мероприятия", event_date__gte=time_now).order_by("event_date")[:5]
     return {"upcoming_events": news}

@@ -1,4 +1,6 @@
+from django.db.models import Q
 from django.shortcuts import render
+from django.utils.timezone import now
 from django.views.generic.base import TemplateView
 from django.views.generic.detail import DetailView
 
@@ -15,7 +17,10 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["carousel_items"] = CarouselItem.objects.all()
         context["services"] = ServiceItem.objects.all()
-        context["news"] = News.objects.all().order_by("-pub_date")[:4]
+
+        context["news"] = News.objects.filter(
+            Q(event_bool=True) & Q(event_date__gte=now().date()) | Q(event_bool=False)
+        ).order_by("-pub_date")[:4]
 
         return context
 
