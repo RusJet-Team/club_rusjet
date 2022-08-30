@@ -1,10 +1,11 @@
-from bootstrap_modal_forms.generic import BSModalCreateView
+import json
+
 from django.conf import settings
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.mail import send_mail
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.urls import reverse_lazy
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView, MultipleObjectMixin
 
@@ -13,7 +14,6 @@ from apps.equipment.models import (
     EquipmentBrend,
     EquipmentCategory,
     EquipmentItem,
-    EquipmentRequest,
     EquipmentSubCategory,
     LastViewedEquipmentItem,
 )
@@ -111,31 +111,30 @@ class EquipmentItemResultsView(ListView):
         return object_list
 
 
-class EquipmentRequestCreateView(BSModalCreateView):
-    template_name = "equipment/create_request.html"
-    form_class = EquipmentRequestModelForm
-    success_message = "Success: Request was created."
-    success_url = reverse_lazy("index")
-
-
-def success_equipment_request(request):
-    if request.method == "GET":
-        equipment = EquipmentRequest.objects.last()
-        message_data = {
-            "name": equipment.name,
-            "email": equipment.email,
-            "phone_number": equipment.phone_number,
-            "text": equipment.text,
-        }
-        subject = f"Запрос на оборудование от {message_data.get('name')} с rusjet.ru"
-        msg_plain = render_to_string("equipment/email.txt", message_data)
-        msg_html = render_to_string("equipment/email.html", message_data)
-
-        send_mail(
-            subject,
-            msg_plain,
-            settings.EMAIL_HOST_USER,
-            [settings.DEFAULT_FROM_EMAIL],
-            html_message=msg_html,
-        )
-        return HttpResponse(200)
+def add_request(request):
+    if request.method == "POST":
+        form = EquipmentRequestModelForm(request.POST)
+        if form.is_valid():
+            request_equipment = form.save()
+            subject = f"Поступил запрос на оборудование от {form.data.get('name')} с rusjet.ru"
+            msg_plain = render_to_string("equipment/email.txt", form.data)
+            msg_html = render_to_string("equipment/email.html", form.data)
+            send_mail(
+                subject,
+                msg_plain,
+                settings.EMAIL_HOST_USER,
+                [settings.DEFAULT_FROM_EMAIL],
+                html_message=msg_html,
+            )
+            return HttpResponse(
+                status=204, headers={"HX-Trigger": json.dumps({"showMessage": f"{request_equipment.name} added."})}
+            )
+    else:
+        form = EquipmentRequestModelForm()
+    return render(
+        request,
+        "equipment/create_request.html",
+        {
+            "form": form,
+        },
+    )

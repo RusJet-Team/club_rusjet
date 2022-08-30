@@ -134,17 +134,6 @@ python-versions = "*"
 Django = ">=4.0"
 
 [[package]]
-name = "django-bootstrap-modal-forms"
-version = "2.2.0"
-description = "A Django plugin for creating AJAX driven forms in Bootstrap modal."
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-Django = ">=1.8"
-
-[[package]]
 name = "django-ckeditor"
 version = "6.4.1"
 description = "Django admin CKEditor integration."
@@ -227,14 +216,14 @@ tests = ["coverage"]
 
 [[package]]
 name = "django-phonenumber-field"
-version = "6.3.0"
+version = "6.4.0"
 description = "An international phone number field for django models."
 category = "main"
 optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
-Django = ">=2.2"
+Django = ">=3.2"
 phonenumberslite = {version = ">=7.0.2", optional = true, markers = "extra == \"phonenumberslite\""}
 
 [package.extras]
@@ -720,7 +709,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.9.12"
-content-hash = "a1e1c0224f2a44e04125fe229e1c3ecdc37a877cabc021a87abca6d887a857da"
+content-hash = "da9b1ca0ae2417b256cbf5d51bcd1ed28c99281b044aa886103430cf70b419f8"
 
 [metadata.files]
 appnope = [
@@ -768,9 +757,6 @@ django = [
     {file = "Django-4.0.4.tar.gz", hash = "sha256:4e8177858524417563cc0430f29ea249946d831eacb0068a1455686587df40b5"},
 ]
 django-admin-sortable2 = []
-django-bootstrap-modal-forms = [
-    {file = "django-bootstrap-modal-forms-2.2.0.tar.gz", hash = "sha256:be180b30892aa7b8012718dfca7586de7d0c143585bc44ed507d50569cdd41cd"},
-]
 django-ckeditor = [
     {file = "django-ckeditor-6.4.1.tar.gz", hash = "sha256:53f6489bfdfc98c2bafd312636db24db8f7964e16178a59153422200ac602de7"},
     {file = "django_ckeditor-6.4.1-py3-none-any.whl", hash = "sha256:59130740564fe258fb50ea51ed7daff556129118ed282dc5ce831e0689662826"},

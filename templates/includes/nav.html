@@ -57,7 +57,7 @@
         <li><a class="nav-link scrollto" href="{% url 'projects_list' %}">Проекты</a></li>
         <li><a class="nav-link scrollto" href="{% url 'news_list' %}">Новости</a></li>
         <li><a class="nav-link scrollto" href="{% url 'index' %}#contact">Контакты</a></li>
-        <li><a id="create-question" class="getstarted scrollto" type="button" name="button">Задать вопрос</a></li>
+        <li><a hx-get="{% url 'ask_question' %}" hx-target="#dialog" class="getstarted scrollto" type="button" name="button">Задать вопрос</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>

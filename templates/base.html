@@ -32,10 +32,11 @@
 {% endblock %}
 
 <body>
+
   {% include 'includes/nav.html' %}
 
   <main>
-    {% include 'includes/question-modal.html' %}
+
     {% block content %}
 
     {% endblock %}
@@ -49,67 +50,27 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
     class="bi bi-arrow-up-short"></i></a>
 
+   <!-- Placeholder for the modal -->
+  <div id="modal" class="modal fade">
+    <div id="dialog" class="modal-dialog" hx-target="this"></div>
+  </div>
+
+
+
   <script src="{% static '/assets/vendor/purecounter/purecounter.js' %}"></script>
   <script src="{% static '/assets/vendor/aos/aos.js' %}"></script>
   <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-  <script src="{% static '/assets/js/jquery.min.js' %}"></script>
-  <script src="{% static '/assets/js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+  <script src="https://unpkg.com/htmx.org@1.6.1/dist/htmx.min.js"></script>
+  <!-- <script src="{% static '/assets/js/jquery.min.js' %}"></script> -->
+  <script src="{% static '/assets/js/dialog.js' %}"></script>
 
   <script src="{% static '/assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
   <script src="{% static '/assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static '/assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static '/assets/js/main.min.js' %}"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-        var asyncSuccessMessageCreate = [
-          "<div ",
-          "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
-          "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
-          "Вопрос отправлен.",
-          "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Закрыть'></button>",
-          "</button>",
-          "</div>",
-          "<script>",
-          "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
-          "<\/script>"
-        ].join("");
-
-        function createBookAsyncModalForm() {
-          $("#create-question").modalForm({
-              formURL: "{% url 'create_question' %}",
-              // modalID: "#create-question",
-              asyncUpdate: true,
-              asyncSettings: {
-                closeOnSubmit: true,
-                successMessage: asyncSuccessMessageCreate,
-                dataUrl: "{% url 'success-question' %}",
-                dataElementId: "nonsense",
-                dataKey: "nonsense",
-                addModalFormFunction: reinstantiateModalForms
-              }
-          });
-        }
-        createBookAsyncModalForm();
-
-        function reinstantiateModalForms() {
-          createBookAsyncModalForm();
-        }
-
-        $(".alert").fadeTo(2000, 500).slideUp(500, function () {
-            $(".alert").slideUp(500);
-        });
-
-
-    });
-  </script>
   {% block extrascripts %}
 
   {% endblock %}
-
-
-
-
 
 
 </body>
