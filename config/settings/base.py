@@ -43,7 +43,7 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "django_cleanup.apps.CleanupConfig",
-    "bootstrap_modal_forms",
+    # "bootstrap_modal_forms",
     "widget_tweaks",
     "ckeditor",
     "webp_doubles",
@@ -250,6 +250,7 @@ ADMIN_SITE_MODELS_ORDER = {
         "Категории оборудования",
         "Подкатегории оборудования",
         "Бренды оборудования",
+        "Запросы оборудования",
     ],
     "Вопросы с сайта": [
         "Общие вопросы",

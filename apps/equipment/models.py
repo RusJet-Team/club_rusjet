@@ -4,7 +4,6 @@ from django.core.validators import MinLengthValidator
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
-# from config.utils.image_change import crop_square_and_resize
 from config.utils.slugify import slugify
 
 
@@ -29,8 +28,6 @@ class EquipmentCategory(models.Model):
         if not self.category_slug:
             self.category_slug = slugify(self.name)
         super().save(*args, **kwargs)
-        # img = crop_square_and_resize(self.image.path)
-        # img.save(self.image.path)
 
     class Meta:
         verbose_name = "Категория оборудования"
@@ -67,8 +64,6 @@ class EquipmentSubCategory(models.Model):
         if not self.subcategory_slug:
             self.subcategory_slug = slugify(self.name)
         super().save(*args, **kwargs)
-        # img = crop_square_and_resize(self.image.path)
-        # img.save(self.image.path)
 
     class Meta:
         ordering = ["name"]
@@ -112,8 +107,6 @@ class EquipmentBrend(models.Model):
         if not self.brend_slug:
             self.brend_slug = slugify(self.name)
         super().save(*args, **kwargs)
-        # img = crop_square_and_resize(self.image.path)
-        # img.save(self.image.path)
 
     class Meta:
         verbose_name = "Бренд оборудования"
@@ -149,11 +142,6 @@ class EquipmentItemImage(models.Model):
     def __str__(self):
         image_name = (self.image.name).split("/")[-1]
         return image_name
-
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-    #     img = crop_square_and_resize(self.image.path)
-    #     img.save(self.image.path)
 
     def clean(self):
         height = 400
@@ -278,22 +266,19 @@ class EquipmentRequest(models.Model):
     name = models.CharField(
         max_length=100,
         verbose_name="Ваше имя",
-        help_text="Пожалуйста, представьтесь",
     )
     email = models.EmailField(
         max_length=150,
         verbose_name="Email",
-        help_text="Укажите, чтобы связаться с Вами",
     )
     phone_number = PhoneNumberField(verbose_name="Телефон", blank=True, help_text="Необязательно")
     text = models.TextField(
         verbose_name="Ваш запрос",
         validators=[MinLengthValidator(10)],
-        help_text="Укажите количество, так же можно указать необходимую периферию и комплектующие",
     )
 
     class Meta:
-        verbose_name = "Запрос"
+        verbose_name = "Запрос оборудования"
         verbose_name_plural = "Запросы оборудования"
 
     def __str__(self):

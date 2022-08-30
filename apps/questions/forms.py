@@ -1,9 +1,9 @@
-from bootstrap_modal_forms.forms import BSModalModelForm
+from django import forms
 
 from apps.questions.models import Question
 
 
-class QuestionModelForm(BSModalModelForm):
+class QuestionModelForm(forms.ModelForm):
     class Meta:
         model = Question
         fields = ["name", "email", "phone_number", "text"]
