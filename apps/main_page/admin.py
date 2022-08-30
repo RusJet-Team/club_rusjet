@@ -4,10 +4,9 @@ from django.contrib.auth.models import Group
 
 from apps.main_page.mixins import AdminImagePreview
 from apps.main_page.models import CarouselItem, Partner
+from config.utils.app_list import get_app_list
 
-# from config.utils.app_list import get_app_list
-
-# admin.AdminSite.get_app_list = get_app_list
+admin.AdminSite.get_app_list = get_app_list
 
 
 @admin.register(CarouselItem)
