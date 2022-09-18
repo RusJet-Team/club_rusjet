@@ -50,6 +50,7 @@ services:
     environment:
       - TZ=Europe/Moscow
       - VALIDATION=http
+      - SUBDOMAINS=www
     env_file:
       - .env
     networks:
