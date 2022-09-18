@@ -5,6 +5,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from config.utils.slugify import slugify
+from config.utils.youtube_links import get_current_link
 
 
 class EquipmentCategory(models.Model):
@@ -204,6 +205,10 @@ class EquipmentItemYoutubeVideoUrl(models.Model):
 
     def __str__(self):
         self.video_url
+
+    def save(self, *args, **kwargs):
+        self.video_url = get_current_link(self.video_url)
+        super().save(*args, **kwargs)
 
 
 class EquipmentItem(models.Model):

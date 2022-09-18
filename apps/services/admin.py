@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 
 from apps.main_page.mixins import AdminImagePreview, HideOnNavPanelAdminModelMixin
-from apps.services.models import ServiceCarouselImage, ServiceItem
+from apps.services.models import ServiceCarouselImage, ServiceItem, ServiceYoutubeVideoUrl
 
 
 class ServiceCarouselImagesInline(AdminImagePreview, SortableTabularInline):
@@ -16,9 +16,21 @@ class ServiceCarouselImagesInline(AdminImagePreview, SortableTabularInline):
     model.__str__ = lambda self: ""
 
 
+class ServiceYoutubeVideoUrlInline(SortableTabularInline):
+    model = ServiceYoutubeVideoUrl
+    verbose_name = "Youtube ссылка"
+    verbose_name_plural = "Youtube ссылки"
+    extra = 1
+    classes = ("collapsible",)
+    model.__str__ = lambda self: ""
+
+
 @admin.register(ServiceItem)
 class ServiceItemAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin):
-    inlines = (ServiceCarouselImagesInline,)
+    inlines = (
+        ServiceCarouselImagesInline,
+        ServiceYoutubeVideoUrlInline,
+    )
     list_display = (
         "my_order",
         "name",

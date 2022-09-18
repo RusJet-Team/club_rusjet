@@ -2,6 +2,7 @@ from ckeditor.fields import RichTextField
 from django.db import models
 
 from config.utils.slugify import slugify
+from config.utils.youtube_links import get_current_link
 
 
 class ServiceItem(models.Model):
@@ -73,3 +74,33 @@ class ServiceCarouselImage(models.Model):
     def __str__(self):
         image_name = (self.image.name).split("/")[-1]
         return image_name
+
+
+class ServiceYoutubeVideoUrl(models.Model):
+    video_url = models.CharField(
+        max_length=150,
+        verbose_name="Ссылка на видео YouTube",
+    )
+    service = models.ForeignKey(
+        ServiceItem,
+        on_delete=models.CASCADE,
+        verbose_name="Услуга",
+    )
+    my_order = models.PositiveIntegerField(
+        default=0,
+        blank=False,
+        null=False,
+        verbose_name="Порядок отображения",
+    )
+
+    class Meta:
+        verbose_name = "Ссылка на видео YouTube"
+        verbose_name_plural = "Ссылки на видео YouTube"
+        ordering = ["my_order"]
+
+    def __str__(self):
+        self.video_url
+
+    def save(self, *args, **kwargs):
+        self.video_url = get_current_link(self.video_url)
+        super().save(*args, **kwargs)

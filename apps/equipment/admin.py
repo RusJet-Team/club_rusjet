@@ -111,10 +111,12 @@ class EquipmentItemAdmin(AdminImagePreview, SortableAdminMixin, admin.ModelAdmin
     )
 
 
-@admin.register(EquipmentRequest)
 class EquipmentRequestAdmin(admin.ModelAdmin):
     list_display = ("name", "email")
 
     def has_add_permission(self, request, obj=None):
         """Remove the save and add new button."""
         return False
+
+
+admin.site.register(EquipmentRequest, EquipmentRequestAdmin)

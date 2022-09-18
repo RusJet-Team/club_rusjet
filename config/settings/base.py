@@ -43,7 +43,6 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "django_cleanup.apps.CleanupConfig",
-    # "bootstrap_modal_forms",
     "widget_tweaks",
     "ckeditor",
     "webp_doubles",
@@ -81,7 +80,9 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [(ROOT_DIR / "templates"),],
+        "DIRS": [
+            (ROOT_DIR / "templates"),
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -137,9 +138,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
-STATICFILES_DIRS = (
-  ROOT_DIR / "base_static",
-)
+STATICFILES_DIRS = (ROOT_DIR / "base_static",)
 
 # MEDIA
 # ------------------------------------------------------------------------------
@@ -154,84 +153,141 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CKEDITOR_CONFIGS = {
-    'default': {
-        'skin': 'moono',
-        'toolbar_Basic': [
-            ['Source', '-', 'Bold', 'Italic']
-        ],
-        'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-            {'name': 'forms',
-             'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-                       'HiddenField']},
-            '/',
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',]},
-            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
-            {'name': 'insert',
-             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
-            '/',
+    "default": {
+        "skin": "moono",
+        "toolbar_Basic": [["Source", "-", "Bold", "Italic"]],
+        "toolbar_YourCustomToolbarConfig": [
+            {"name": "document", "items": ["Source", "-", "Save", "NewPage", "Preview", "Print", "-", "Templates"]},
+            {"name": "clipboard", "items": ["Cut", "Copy", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo"]},
+            {"name": "editing", "items": ["Find", "Replace", "-", "SelectAll"]},
+            {
+                "name": "forms",
+                "items": [
+                    "Form",
+                    "Checkbox",
+                    "Radio",
+                    "TextField",
+                    "Textarea",
+                    "Select",
+                    "Button",
+                    "ImageButton",
+                    "HiddenField",
+                ],
+            },
+            "/",
+            {
+                "name": "basicstyles",
+                "items": ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "-", "RemoveFormat"],
+            },
+            {
+                "name": "paragraph",
+                "items": [
+                    "NumberedList",
+                    "BulletedList",
+                    "-",
+                    "Outdent",
+                    "Indent",
+                    "-",
+                    "Blockquote",
+                    "CreateDiv",
+                    "-",
+                    "JustifyLeft",
+                    "JustifyCenter",
+                    "JustifyRight",
+                    "JustifyBlock",
+                    "-",
+                    "BidiLtr",
+                    "BidiRtl",
+                ],
+            },
+            {"name": "links", "items": ["Link", "Unlink", "Anchor"]},
+            {
+                "name": "insert",
+                "items": ["Image", "Flash", "Table", "HorizontalRule", "Smiley", "SpecialChar", "PageBreak", "Iframe"],
+            },
+            "/",
+            {"name": "styles", "items": ["Styles", "Format", "Font", "FontSize"]},
+            {"name": "colors", "items": ["TextColor", "BGColor"]},
+            {"name": "tools", "items": ["Maximize", "ShowBlocks"]},
+            "/",
             # put this to force next toolbar on new line
-            {'name': 'yourcustomtools', 'items': [
-            # put the name of your editor.ui.addButton here
-                'Preview',
-                'Maximize',
-
-            ]},
+            {
+                "name": "yourcustomtools",
+                "items": [
+                    # put the name of your editor.ui.addButton here
+                    "Preview",
+                    "Maximize",
+                ],
+            },
         ],
-        'toolbar': 'YourCustomToolbarConfig',  # put selected toolbar config here
-        'toolbarGroups': [{ 'name': 'document', 'groups': [ 'mode', 'document', 'doctools' ] }],
-        'height': 291,
-        'width': '100%',
-        'toolbarCanCollapse': True,
-        'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
-        'tabSpaces': 4,
-        'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
-            # your extra plugins here
-            'div',
-            'autolink',
-            'autoembed',
-            'embedsemantic',
-            'autogrow',
-            'devtools',
-            'widget',
-            'lineutils',
-            'clipboard',
-            'dialog',
-            'dialogui',
-            'elementspath'
-        ]),
+        "toolbar": "YourCustomToolbarConfig",  # put selected toolbar config here
+        "toolbarGroups": [{"name": "document", "groups": ["mode", "document", "doctools"]}],
+        "height": 291,
+        "width": "100%",
+        "toolbarCanCollapse": True,
+        "mathJaxLib": "//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML",
+        "tabSpaces": 4,
+        "extraPlugins": ",".join(
+            [
+                "uploadimage",  # the upload image feature
+                # your extra plugins here
+                "div",
+                "autolink",
+                "autoembed",
+                "embedsemantic",
+                "autogrow",
+                "devtools",
+                "widget",
+                "lineutils",
+                "clipboard",
+                "dialog",
+                "dialogui",
+                "elementspath",
+            ]
+        ),
     }
 }
 
 MODELS_WITH_IMAGES_FOR_WEBP = {
-    'club.ClubMember': ['image',],
-    'club.HalfStaticPageImage': ['image',],
-    'equipment.EquipmentCategory': ['image',],
-    'equipment.EquipmentSubCategory': ['image',],
-    'equipment.EquipmentBrend': ['image',],
-    'equipment.EquipmentItemImage': ['image',],
-    'main_page.CarouselItem': ['image',],
-    'main_page.Partner': ['image',],
-    'news.News': ['image',],
-    'projects.ProjectImage': ['image',],
-    'services.ServiceItem': ['image',],
-    'services.ServiceCarouselImage': ['image',],
+    "club.ClubMember": [
+        "image",
+    ],
+    "club.HalfStaticPageImage": [
+        "image",
+    ],
+    "equipment.EquipmentCategory": [
+        "image",
+    ],
+    "equipment.EquipmentSubCategory": [
+        "image",
+    ],
+    "equipment.EquipmentBrend": [
+        "image",
+    ],
+    "equipment.EquipmentItemImage": [
+        "image",
+    ],
+    "main_page.CarouselItem": [
+        "image",
+    ],
+    "main_page.Partner": [
+        "image",
+    ],
+    "news.News": [
+        "image",
+    ],
+    "projects.ProjectImage": [
+        "image",
+    ],
+    "services.ServiceItem": [
+        "image",
+    ],
+    "services.ServiceCarouselImage": [
+        "image",
+    ],
 }
 
-CRONJOBS = [
-    ('* * */1 * *', 'config.utils.crontabs.delete_last_viewed_every_day')
-]
+CRONJOBS = [("* * */1 * *", "config.utils.crontabs.delete_last_viewed_every_day")]
 
 ADMIN_SITE_APPS_ORDER = (
     "Оборудование",
@@ -276,5 +332,5 @@ ADMIN_SITE_MODELS_ORDER = {
     ],
     "Пользователи и группы": [
         "Пользователи",
-    ]
+    ],
 }
