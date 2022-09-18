@@ -1,6 +1,8 @@
 from ckeditor.fields import RichTextField
 from django.db import models
 
+from config.utils.youtube_links import get_current_link
+
 
 class ClubMember(models.Model):
     first_name = models.CharField(
@@ -115,3 +117,7 @@ class HalfStaticPageYoutubeVideoUrl(models.Model):
 
     def __str__(self):
         self.video_url
+
+    def save(self, *args, **kwargs):
+        self.video_url = get_current_link(self.video_url)
+        super().save(*args, **kwargs)
