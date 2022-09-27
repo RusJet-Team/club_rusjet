@@ -218,10 +218,12 @@ class EquipmentItem(models.Model):
     )
     title = models.CharField(
         max_length=500,
+        blank=True,
         verbose_name="Краткое описание",
     )
     tech_data = RichTextField(
         verbose_name="Технические характеристики",
+        blank=True,
     )
     subcategory = models.ForeignKey(
         EquipmentSubCategory,

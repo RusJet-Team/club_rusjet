@@ -45,7 +45,9 @@
                 <div class="col-lg-7 col-md-12 col-sm-12 gy-3">
                   <div class="shop-detail-description">
                     <h2>{{ object.name }}</h2>
+                    {% if object.title %}
                     <p>{{ object.title }}</p>
+                    {% endif %}
                   </div>
                   <div class="row">
                     <div class="col text-center p-3">
@@ -55,10 +57,13 @@
                 </div>
 
                 <div class="col-lg-10 col-md-12 col-sm-12 gy-3">
+                  
                   <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                    {% if object.tech_data %}
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active" style="color: #3598db;" id="technical-tab" data-bs-toggle="tab" data-bs-target="#technical" type="button" role="tab" aria-controls="technical" aria-selected="true">Характеристики</button>
                     </li>
+                    {% endif %}
                     {% if object.equipmentitemdocument_set.first %}
                     <li class="nav-item" role="presentation">
                       <button class="nav-link" style="color: #3598db" id="documentation-tab" data-bs-toggle="tab" data-bs-target="#documentation" type="button" role="tab" aria-controls="documentation" aria-selected="false">Загрузки</button>
@@ -76,8 +81,9 @@
 
                     <div class="tab-content" id="myTabContent">
 
-
+                        {% if object.tech_data %}
                         <div class="tab-pane fade show active" id="technical" role="tabpanel" aria-labelledby="technical-tab">
+                          
                           <div class="card mb-3">
                               <div class="card-body d-flex align-items-center">
                                 <div class="pl-3 data">
@@ -85,7 +91,10 @@
                                 </div>
                               </div>
                           </div>
+                          
                         </div>
+                        {% endif %}
+                        
                         {% if object.equipmentitemdocument_set.first %}
                         <div class="tab-pane fade" id="documentation" role="tabpanel" aria-labelledby="documentation-tab">
                           {% for document in object.equipmentitemdocument_set.all %}
